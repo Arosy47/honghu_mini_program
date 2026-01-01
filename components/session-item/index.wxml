@@ -1,0 +1,28 @@
+
+
+<view hover-class='highSelectColor' bind:tap="gotoChatRoom" bind:longpress="delete">
+
+  <view class="abcd" bind:tap="gotoChatRoom" >
+    <avatar class="avatar" circle="{{true}}" isLink="{{true}}" src="{{session.toUserAvatar}}" user-id="{{session.toUserId}}" size="84" blue-v="{{session.blueV}}" />
+
+    <view class="content">
+      <view class="nickNime">{{session.sessionName}}</view>
+      <view class="content-text-one-line" style="font-size: 24rpx; color: #a5a5a5;">
+
+        {{session.contentType=='IMAGE'?'[图片]':session.content}}
+      </view>
+    </view>
+
+    <view class="right-content">
+      <view class="text-xs" style="color: #bdbdbd;">{{session.latestMsgTime}}</view>
+
+      <view class="cu-tag round bg-red sm" wx:if="{{badge!=0}}">
+          <block>{{badge>99?"99+":badge}}</block>
+      </view>    
+    </view>
+
+  </view>
+  
+</view>
+<view class="l1"></view>
+

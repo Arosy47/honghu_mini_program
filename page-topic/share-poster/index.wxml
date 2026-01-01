@@ -1,0 +1,21 @@
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content">海报分享</view>
+</cu-custom>
+
+<painter 
+  customActionStyle="{{customActionStyle}}"
+  palette="{{imgDraw}}"
+  bind:imgOK="onImgOK"
+  widthPixels="1000"
+/>
+
+<view style="display: flex; justify-content: center;align-items: center; width: 100%; margin-top: 10%;">
+  
+  <image src="{{imagePath}}" style="width: 621rpx; height: 830rpx;" />
+</view>
+
+<view class="padding flex flex-column" style="position: fixed; bottom: 250rpx;">
+  <button class="cu-btn intro" style="background-color: #eb7a76; color: white;" bindtap="saveImage">点击保存</button>
+</view>
+
+<privacy/>

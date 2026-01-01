@@ -1,0 +1,323 @@
+
+.item {
+	padding: 20rpx;
+	text-align: center;
+	margin: auto;
+}
+
+page{
+
+   background-color: white;
+}
+
+.num-font {
+  
+  font-size: 30rpx;
+  color: rgb(83, 82, 82);
+  font-weight: bold;
+
+}
+
+.topic-item {
+
+}
+
+.loading {
+  padding-bottom: 20rpx;
+}
+
+.btn-search {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20rpx;
+  right: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  
+  border-radius: 50%;
+  
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.btn-search:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.highSelectColor{
+   
+   opacity: 1;
+}
+
+.item-icon{
+  height: 50rpx;
+  color: #fff;
+}
+
+.content-text-two-line {
+  color: #777777;
+  
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-text-one-line {
+  color: #777777;
+  width: 600rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xiaohui{
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.tag {
+  width: 100rpx;
+}
+
+.float-container {
+  background-color: #ffffff;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  margin-top: 20rpx;
+}
+
+.float-container-s {
+  
+  background-color: #ededed;
+  height: 70rpx;
+
+  position: fixed;
+  z-index: 1;
+  width: auto;
+  right: 0;
+  left: 0;
+  
+}
+
+.llll {
+
+  width: 100%;
+  border-bottom: 1rpx solid #c2bdbd;
+  
+}
+
+.swiper-container {
+  margin-left: 10rpx;
+  height: 120rpx;
+  width: 580rpx;
+  overflow: hidden;
+}
+
+.swiper-container-s {
+  padding-top: 0rpx;
+  height: 70rpx;
+  width: 700rpx;
+  
+}
+
+.nav-scroll {
+  width: 100%;
+  background: #ffffff;
+  white-space: nowrap;
+}
+
+.nav-list {
+
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  padding: 10rpx 20rpx;
+
+}
+.nav-item {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20rpx;
+  
+  width: 120rpx;
+  height: 130rpx;
+  margin: 0 0rpx;
+}
+
+.nav-item image {
+  width: 76rpx;
+  height: 76rpx;
+}
+.nav-icon {
+
+}
+
+.nav-nameeee {
+  font-size: 21rpx;
+  color: #3d3d3d;
+  margin-top: 0rpx;
+  
+}
+
+.nav-hover{
+  background-color: rgb(231, 231, 228);
+}
+
+.testmaoboli{
+  position: absolute;
+
+  overflow: hidden;
+
+  display: flex;
+  box-sizing: border-box;
+  z-index: 0;
+
+  width: 100%;
+  height: 130rpx;
+  
+  backdrop-filter: blur(3px);
+
+  padding: 20rpx;
+  
+}
+
+.topten-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #ededed;
+}
+
+.card {
+  width: 130rpx;
+  height: 120rpx;
+  background-color: #ff5f36;
+  position: relative;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:url(https://cdn.honghu.com/sysImg/hot-sale.png) ;
+
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: 0% 0%;
+
+  opacity: 0.2; 
+  z-index: 1; 
+}
+.card::after {
+  content: '十大热帖';
+  font-size: 22rpx;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 20rpx;
+  right: 0;
+  bottom: 0;
+  z-index: 1; 
+}
+
+.triangle {
+  position: absolute;
+  top: 50%;
+  right: -15rpx; 
+  transform: translate(-90%,-50%);
+  
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15rpx 15rpx 15rpx 0;
+  border-color: transparent #ededed transparent transparent; 
+}
+
+.container {
+  
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  height: 50px;
+  font-size: 14px;
+  color: #999;
+  padding-bottom: 20rpx;
+  z-index: -1;
+}
+
+.text {
+  margin-right: 10px;
+}
+
+.bankuai-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid{
+  flex: 1; 
+  min-width: 30%;
+  max-width: 100%;
+  margin:5rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  background-color: #f0f0f0;
+
+  border-radius: 10rpx;
+}
+
+.custom-mask{
+  background-color: rgba(0, 0, 0, 0.7);
+
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+}
+
+.msg-badge{
+  border-radius: 200rpx;
+	position: absolute;
+	top: 0rpx;
+	right: 0rpx;
+	font-size: 100rpx;
+	padding: 0rpx 10rpx;
+  height: 20rpx;
+  width: 20rpx;
+  background-color: #dd514c;
+}

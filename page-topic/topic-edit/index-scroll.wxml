@@ -1,0 +1,108 @@
+
+
+<page-meta page-style="overflow: {{pickerVisiable ? 'hidden' : 'visible'}}" />
+
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content">发布</view>
+</cu-custom>
+
+<view wx:if="{{loading}}" class="loading-overlay"></view>
+
+<van-notice-bar
+  left-icon="volume-o"
+  text="禁止发布重复信息，广告营销类，含二维码等内容"
+/>
+
+<scroll-view style="position: absolute;top: {{stickTop}}px; height: {{windowHeight-navTop}}px; overflow-y:auto;" scroll-y lower-threshold="50" enhanced show-scrollbar scroll-with-animation enable-passive binddragging="onRagging" bind:tap="onTapScroll" >
+
+  <view class="cu-form-group" catch:tap="stopBlur">
+    <textarea style="margin: 15rpx 0rpx; height: 450rpx; font-size:28rpx; line-height: 38rpx;" focus="{{focus}}" maxlength="1200" confirm-type="return" bindfocus="InputFocus" bindinput="setContent" placeholder="请输入内容" adjust-position="{{false}}" value="{{content}}" show-confirm-bar="{{false}}" hold-keyboard ></textarea>
+  </view>
+
+  <view class="media">
+    <l-image-picker id="image-picker" wx:if="{{!video}}" custom count="9" size="3" size-type="{{sizeType}}" mode="aspectFill" bind:linchange="onChangeImage" bind:linremove="onChangeImage">
+      <image class="icon-pic" src="/images/icon_edit/icon_picture.png" />
+    </l-image-picker>
+    
+  </view>
+
+  <view wx:if="{{isVote}}" style="height: 12rpx; background-color: #eff2f7;"></view>
+  <view wx:if="{{isVote}}" style="width: 100%; background-color: white; padding-top: 20rpx;">
+    <view style="font-size: 33rpx;font-weight: bold; padding-left:20rpx;">投票</view>
+
+    <view wx:for="{{voteOptions}}" wx:key="index" wx:for-index="idx" class="cu-form-group" >
+      <text wx:if="{{idx>1}}" class="cuIcon-roundclosefill" data-index="{{idx}}" bind:tap="deleteOption"></text>
+      <input type="text" name="pickUpCode" style="position: absolute; left: 100rpx; width:600rpx;text-align: left;" placeholder="编辑选项{{idx+1}}" placeholder-class='placeholder' maxlength='30' data-index="{{idx}}" bindinput="setVoteOptions" value="{{item.optionContent}}" />
+    </view>
+
+    <view class="cu-form-group" bind:tap="addVoteOption">
+      <view class="title cuIcon-roundaddfill">添加选项</view>
+    </view>
+    
+    <view class="l1"></view>
+
+    <view class="cu-form-group" >
+      <view class="title">可多选</view>
+      <switch checked="{{canMultiSelect}}" bindchange="canMultiSelect"/>
+    </view>
+   
+    <view class="cu-form-group" >
+      <view class="title">投票有效期</view>
+
+      <input type="digit" class="sell_input" style="text-align: right;" placeholder="输入有效期" placeholder-class='placeholder' maxlength='3' bindinput="setVoteValidDays" />天
+     
+    </view>
+    <view class="l1"></view>
+
+  </view>
+
+  <view style="height: 12rpx; background-color: #eff2f7;"></view>
+
+  <view style="width: 100%; background-color: white; bottom: 220rpx;">
+    <view class="l1"></view>
+    <view class="cu-form-group" hover-class="highSelectColor" bindtap="showPopup" >
+      <view class="title">话题分类</view>
+      <view style="margin-left: auto; color: #999999;" wx:if="{{selectLabel}}">{{selectLabel.categoryName}}</view>
+      <view class="cuIcon-right" style="color: #cccccc" ></view>
+    </view>
+    <view class="l1"></view>
+
+    <view class="cu-form-group" >
+      <view>
+        <view class="title">切换第二身份</view>
+        <view style="font-size: 22rpx; width: 90%; margin-left: 10rpx; color: gray;">每天21:00进入黑夜模式，随机分配昵称，匿名帖8:00自动销毁</view>
+      </view>
+      <switch checked="{{isAnon}}" bindchange="onAnonTap"/>
+    </view>
+
+    <view class="l1"></view>
+  </view>
+
+  <view style="height: 280rpx;"></view>
+
+</scroll-view>
+
+<button disabled="{{loading||content.length<1}}" loading="{{loading}}"  bindtap="submitTopic" class="button-loading-custom" style="position: fixed; height: 120rpx; background-color: #eb7a76; bottom: 0;width: 100%; display: flex;justify-content: center; align-items: center; color: white; font-size: 35rpx; padding-bottom: 10rpx; z-index: 1;">{{loading?'发布中':'发布'}}</button>
+
+<view catch:tap="stopBlur">
+  <emoji-picker visible="{{pickerVisiable}}" topicedit="{{true}}" emojiheight="{{initKeyboardHeight}}" bind:onSelect="onSelect" bind:closeDialog="closeDialog"></emoji-picker>
+</view>
+
+<view wx:if="{{focus||pickerVisiable}}" class="cu-bar foot edit-item" style="justify-content:flex-end; bottom:{{initKeyboardHeight}}px; background-color: white;" catch:tap="stopBlur">
+
+  <view class="action" catch:tap="{{isVote?'cancelVote':'showVote'}}">
+    <text class="{{isVote?'cuIcon-rankfill':'cuIcon-rank'}} text-grey" style="font-size: 50rpx;"></text>
+  </view>
+
+  <view class="action" catch:tap="{{pickerVisiable?'showKeyBoard':'showEmoji'}}">
+    <text class="{{pickerVisiable?'cuIcon-keyboard':'cuIcon-emoji'}} text-grey" style="font-size: 50rpx;"></text>
+  </view>
+</view>
+
+<van-popup show="{{showPopup}}" bind:close="closePopup" position="bottom" custom-style="height: 30%">
+  <view class="tag-items" style="height: 50rpx;">
+    <l-tag l-class="tag" style="margin-right:15rpx; margin-bottom:10rpx;" l-image-class="tag-image" image="{{'https://'+ item.bgPicture+'!article_small'}}" width="50" height="70" wx:for="{{labels}}" wx:key="index" shape="circle" bg-color="{{item.active ? '#e54d42' : '#F5F5F5'}}" plain="{{!item.active}}" font-color="{{item.active ? '#FFFFFF' : '#000000'}}" data-label="{{item.categoryCode}}" bind:lintap="onTagTap">{{item.categoryName}} </l-tag>    
+  </view>
+</van-popup>
+
+<privacy/>

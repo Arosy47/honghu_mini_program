@@ -1,0 +1,29 @@
+{
+  "name": "on_campus",
+  "version": "1.4.1",
+  "description": "A WeChat Mini-Program for campus social platform - 红狐生态圈",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arosy47/on_campus_mini_program.git"
+  },
+  "author": "xiaomeng",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Arosy47/on_campus_mini_program/issues"
+  },
+  "homepage": "https://github.com/Arosy47/on_campus_mini_program#readme",
+  "dependencies": {
+    "@miniprogram-component-plus/sticky": "^1.0.1",
+    "@vant/weapp": "^1.10.14",
+    "@yyjeffrey/wxutil": "1.2.0",
+    "lin-ui": "0.9.13"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cleanwxss": "^1.0.2"
+  }
+}

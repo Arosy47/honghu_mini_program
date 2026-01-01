@@ -1,0 +1,55 @@
+
+
+.favor-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+}
+
+.item {
+  height: 60rpx;
+  width: 130rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.zhanwei{
+  border-radius: 0%;
+  margin-left: 0rpx;
+  margin-right: 0rpx;
+  display: block;
+  padding-left: 0%;
+  padding-right: 0%;
+  -webkit-tap-highlight-color:none;
+  background-color: unset;
+  color: "";
+
+  height: 60rpx;
+  width: 130rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.item-icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 1rpx;
+}
+
+.item-text {
+  color: #777;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+}
+

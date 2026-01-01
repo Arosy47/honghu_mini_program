@@ -1,0 +1,39 @@
+
+
+<view bind:tap="gotoTopicDetail" >
+  <view wx:if="{{imgUrl}}" style="display: flex; justify-content: space-between;">
+    <view>
+      <rich-text class="content" nodes="{{richContent}}"></rich-text>
+    </view>
+
+    <view>
+      <image style="height: 120rpx; width: 120rpx; border-radius: 10%;" mode="aspectFill" src="{{imgUrl}}" mode="aspectFill"/>
+    </view>
+  </view>
+
+  <view wx:else >
+    <view>
+      <rich-text class="content" nodes="{{richContent}}"></rich-text>
+    </view>
+
+  </view>
+
+  <view class="bottom-item">
+    <view class="action text-xl" style="display: flex; justify-content: center; align-items: center;color: gray;">
+
+      <text style="font-size: 22rpx; font-weight:400;">{{topic.commentCount}} 评论</text>
+      
+    </view>
+
+    <view style="width: 400rpx; display: flex; justify-content: flex-end; align-items: center; color: gray;">
+
+      <avatar anonymous="{{topic.anonymous}}" circle="{{true}}" src="{{topic.avatar}}" is-link="{{false}}" size="35" />
+
+      <nickname style="margin-left: 2rpx;" nickname-class="nickname-class" nickname="{{topic.anonymous?topic.anonymousName:topic.userNickName}}" isAnon="{{topic.anonymous}}" is-link="{{false}}" size="22" length="12"/>
+
+      <text style="font-size: 40rpx; margin-left: 5rpx;margin-right: 5rpx;">·</text>
+      <text style="font-size: 22rpx;">{{topic.createTime}}</text>
+    </view>
+  </view>
+  <view class="l1"></view>
+</view>

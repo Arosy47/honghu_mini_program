@@ -1,0 +1,144 @@
+
+
+@import '/common.wxss';
+
+@import "./colorui/main.wxss";
+
+page {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  font-size: 28rpx;
+  letter-spacing: 1rpx;
+  color: #333;
+
+  background-color: white !important; 
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20rpx 0rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.nav-title {
+  font-size: 30rpx;
+  font-weight: 480;
+}
+
+.nav-title::first-letter {
+  font-size: 40rpx;
+  margin-right: 4rpx;
+}
+
+.nav-des {
+  font-size: 24rpx;
+  text-transform: Capitalize;
+  margin-top: 30rpx;
+  position: relative;
+}
+
+.nav-name {
+  font-size: 28rpx;
+  text-transform: Capitalize;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.nav-name::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40rpx;
+  height: 6rpx;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.nav-name::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 90rpx;
+  height: 1px;
+  background: #fff;
+  bottom: 0;
+  right: 40rpx;
+  opacity: 0.3;
+}
+
+.theme-color{
+  background-color: var(--theme) !important;
+
+  color: black;
+  font-weight: bold;
+}
+
+.theme-color-button{
+  background-color: var(--theme-button) !important;
+
+  color: black;
+  font-weight: bold;
+}
+
+.theme-color-gray{
+  background-color: #ededed;
+  color: black;
+  font-weight: bold;
+}
+
+.theme-color-white{
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+.page-bottom-blur{
+  position: fixed;
+  width: 100%;
+  height: 10%;
+  bottom: 0;
+  backdrop-filter: blur(14rpx);
+  mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, white 0%, transparent 100%);
+
+  pointer-events: none;
+}
+.page-bottom-background{
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 10%;
+  bottom: 0;
+
+  -webkit-mask-image: linear-gradient(to top, white 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.bottom-adapt{
+
+  padding-bottom: 47rpx;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.j_b {
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

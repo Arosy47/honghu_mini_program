@@ -1,0 +1,13 @@
+@import "./components/main.wxss";
+@import "./components/icon.wxss";
+
+@import "./reset.wxss";
+
+@import "./components/animation.wxss";
+
+page {
+
+  --theme: rgb(255, 255, 255);
+
+  --theme-button: #eb7a76;
+}

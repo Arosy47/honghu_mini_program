@@ -1,0 +1,102 @@
+.dialog {
+  margin:0;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom: 0;
+  
+  padding: 0rpx 15rpx;
+  background:#fff;
+  z-index:1999;
+  animation-duration: .4s;
+  animation-name: slideUp;
+
+  padding-bottom: env(safe-area-inset-bottom); 
+}
+.dialog-topic{
+  margin:0;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom: 0;
+  
+  padding: 0rpx 15rpx;
+  background:#fff;
+  z-index:1999;
+  animation-duration: .4s;
+  animation-name: slideUp;
+  
+}
+
+.dialog-bg {
+  background:rgba(0, 0, 0, 0.705);
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  z-index: 98;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+.group {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.group-item {
+  margin-right: 20rpx;
+  font-size: 52rpx;
+  width: 90rpx;
+  min-width: 90rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emoji-all {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.emoji {
+  font-size: 65rpx;
+  width: 65rpx;
+  margin: 0 19rpx;
+}
+.active {
+  border-radius: 9999rpx;
+  background-color: #ebeef5;
+}
+.pop-indicator {
+  background-color: #E9EBEE;
+  height: 10rpx;
+  width: 68rpx;
+  margin: 3rpx auto;
+  border-radius: 19rpx;
+}
+
+.class-topic-edit{
+  padding: 0rpx 0 0rpx;
+  
+}
+.class2{
+  padding: 0rpx 0 0rpx;
+  
+}

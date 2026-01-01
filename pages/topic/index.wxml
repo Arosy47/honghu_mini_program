@@ -1,0 +1,161 @@
+<cu-custom style="position: fixed; z-index: 1000;" bgColor="theme-color" customBack="{{true}}">
+  <view slot="backText">
+
+  </view>
+  
+  <view slot="content">{{strollSchool && strollSchool.name ? strollSchool.name : '生态圈'}}</view>
+</cu-custom>
+
+<view class="refresh theme-color-white" style="height: {{CustomBar}}px;">
+
+    <text>{{refreshText}}</text>
+
+</view>
+
+<view wx:if="{{showTopTen && yasuoTopTenOne.length > 0}}" class="float-container-s" style="top: {{stickTop}}px; z-index: 100;" >
+  <view bindtap="gotoTopTen" style="display: flex; flex-direction: row; justify-content: flex-start;height: 100%;">
+
+    <view style="width: 60rpx; display: flex; justify-content: center;align-items: center; background-color: #ff5f36;">
+      <text class="cuIcon-hotfill text-white"></text>
+    </view>
+
+    <view style="margin-left: 10rpx;" style="display: flex; align-items: flex-end;">
+      <swiper class="swiper-container-s" vertical="true" indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{3200}}" duration="{{2800}}" circular="true" previous-margin="0rpx">
+        <swiper-item wx:for="{{yasuoTopTenOne}}" wx:key="id">
+          <view style="padding-left: 20rpx; width: 670rpx; height: 70rpx; display: flex; align-items: center;">
+            <view wx:if="{{index<9}}" class="content-text-one-line" style="display: flex; justify-content: flex-start; align-items: flex-start;">
+              <view style="padding-top: 5rpx; margin-right: 15rpx;">
+                <text wx:if="{{index===0}}" class="num-font" style="color: rgb(165, 21, 21);" >0{{index+1}}. </text>
+                <text wx:elif="{{index===1}}" class="num-font" style="color: rgb(255, 115, 0);">0{{index+1}}. </text>
+                <text wx:elif="{{index===2}}" class="num-font" style="color: rgb(233, 186, 186)">0{{index+1}}. </text>
+                <text wx:elif="{{index===9}}" class="num-font" style="color: rgb(134, 134, 134)">{{index+1}}. </text>
+                <text wx:elif="{{index>2}}" class="num-font" style="color: rgb(134, 134, 134)">0{{index+1}}. </text>
+                 
+              </view>
+              <rich-text style="font-size: 30rpx; color: #242424;font-weight: bold;" nodes="{{item.content}}" ></rich-text>
+              <view style="position: absolute; right: 35rpx; bottom: 17rpx; font-size: 20rpx; color: gray;">{{item.viewCount}}人围观</view>
+            </view>
+
+            <view wx:if="{{index==9}}" class="content-text-one-line">
+              <text class="num-font" >{{index+1}}. </text>
+
+              <rich-text style="font-size: 30rpx; color: #242424;font-weight: bold;" nodes="{{item.content}}" ></rich-text>
+
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view class="llll"></view>
+</view>
+
+  <view id="top-trigger" class="float-container"  bindtap="gotoTopTen" >
+
+    <view class="topten-class">
+      <view class="card">
+        <view class="triangle"></view>
+        <view class="cuIcon-roundrightfill" style="font-size: 35rpx;position: absolute; bottom: 12%; left: 50%;color: white;transform: translateX(-50%);"></view>
+      </view>
+    </view>
+
+    <view style="border-top-right-radius: 15rpx;border-bottom-right-radius: 15rpx;background-color: #ededed;">
+      <swiper class="swiper-container" vertical="true" indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{3500}}" duration="{{2800}}" circular="true"	easing-function="linear">
+        <swiper-item wx:for="{{yasuoTopTenTwo}}" wx:key="id">
+
+          <view style="width: 560rpx; display: flex; justify-content: flex-start; align-items: flex-start;">
+            <view style="padding-top: 13rpx;">
+              <text wx:if="{{index===0}}" class="num-font" style="color: rgb(165, 21, 21);" >0{{index+1}}. </text>
+              <text wx:elif="{{index===1}}" class="num-font" style="color: rgb(255, 115, 0);">0{{index+1}}. </text>
+              <text wx:elif="{{index===2}}" class="num-font" style="color: rgb(233, 186, 186)">0{{index+1}}. </text>
+              <text wx:elif="{{index>2 && index < 9}}" class="num-font" style="color: rgb(134, 134, 134);">0{{index+1}}. </text>
+              <text wx:else class="num-font" style="color: rgb(134, 134, 134);">{{index+1}}. </text>
+            </view>
+
+            <view class="content-text-two-line" style="padding-left: 10rpx; padding-right: 10rpx; padding-top: 12rpx;">
+
+              <rich-text style="font-size: 28rpx; color: #242424;font-weight: bold;" nodes="{{item.content}}" ></rich-text>
+            </view>
+
+            <view style="position: absolute; right: 35rpx; bottom: 17rpx; font-size: 20rpx; color: gray;">{{item.viewCount}}人围观</view>
+
+          </view>
+
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+  <view wx:if="{{navList && navList.length<=6}}" style="display: flex; justify-content: space-around;align-items: center; padding: 10rpx 20rpx;">
+    <view bindtap="nav" hover-class="nav-hover" data-index="{{index}}" class="nav-item" wx:for="{{navList}}" wx:key="index">
+
+      <view style="position: relative;">
+        <image class="nav-icon" src="{{item.iconUrl}}" mode="aspectFill"></image>
+
+      </view>
+      <view class="nav-nameeee">{{item.title}}</view>
+    </view>
+  </view>
+
+  <scroll-view wx:else scroll-x="{{true}}" class="nav-scroll" style="padding-top: 10rpx;" enhanced show-scrollbar="{{false}}">
+    <view class="nav-list">
+      <view bindtap="nav" hover-class="nav-hover" data-index="{{index}}" class="nav-item" wx:for="{{navList}}" wx:key="index">
+        
+        <view style="position: relative;">
+          <image class="nav-icon" src="{{item.iconUrl}}" mode="aspectFill"></image>
+
+        </view>
+        <view class="nav-nameeee">{{item.title}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view style="height: 10rpx; background-color: #ededed;"></view>
+
+  <view wx:if="{{initLoading}}" style="position: absolute; top:500rpx; left:300rpx">
+    <view class="cu-load loading text-gray" style="color: #666;"></view>
+  </view>
+
+  <view wx:for="{{topics}}" id="{{'selection-'+groupIndex}}" wx:for-item="list"  wx:for-index="groupIndex"  wx:key="groupIndex">
+    <view wx:if="{{styleMap[groupIndex].visible}}" class="">
+      <view wx:for="{{list}}" wx:for-item="item" id="item-{{item.id}}" wx:key="{{item.id}}" >
+        
+        <topic-item wx:if="{{item.functionType=='NORMAL'}}" hover topic-item-class="topic-item" topic="{{item}}" isOwner="{{userId === item.userId}}" admin="{{item.admin}}" data-group-index="{{groupIndex}}" data-index="{{index}}" bind:moreIconTap="showActions" bind:commentIconTap="gotoTopicDetail" bind:thumbUpIconTap="onThumbUpTap" 
+        bind:collectIconTap="onCollectTap" bind:viewIconTap="gotoTopicDetail"
+        bind:dingIconTap="onDingTap"
+        bind:tagTap="gotoCategory" bind:shareTab="onShareTab" bind:vote="vote" showTop bind:joinLottery="onJoinLottery"/>
+      </view>
+    </view>
+    <view wx:else style="height:{{styleMap[groupIndex].height}}px" class="selection--show">
+      
+    </view>
+  </view>
+
+  <l-loadmore l-class="loading" show="{{!initLoading&&loading}}" type="loading" loading-text="正在加载中..." line />
+  <l-loadmore l-class="loading" show="{{!nodata&&!initLoading&&!hasMore && !loading}}" type="end" end-text="已经到底了" line />
+
+  <nothing wx:if="{{nodata}}" pic="../../images/icon_nothing/pic_topic.png" tip="暂无话题，逛逛其他学校吧" />
+
+  <view style="height: 100rpx;"></view>
+
+<view class="btn-search theme-color-button" bindtap="onSearchTap" hover-class="highSelectColor" hover-stay-time="700">
+  <image class="item-icon" mode="aspectFit" src="../../images/search.png" />
+</view>
+
+<van-action-sheet
+  z-index="1026"
+  show="{{ reportReasonShow }}"
+  actions="{{ reportReasonList }}"
+  bind:close="reportReasonListClose"
+  bind:select="reportReasonSelect"
+/>
+
+<van-action-sheet
+  z-index="1025"
+  show="{{ actionsShow }}"
+  actions="{{ actions }}"
+  bind:close="actionClose"
+  bind:select="actionSelect"
+/>
+
+<privacy/>

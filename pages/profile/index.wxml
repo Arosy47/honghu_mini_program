@@ -1,0 +1,78 @@
+
+
+<view style="position: fixed; top: 0; width: 100%;">
+  <scroll-view scroll-y lower-threshold="50" bindscrolltolower="onReachBottomScrollView" refresher-triggered="{{refreshing}}" style="position: absolute; height: {{windowHeight}}px; overflow-y:auto;">
+
+    <profile-card isSelf user="{{user}}" admin="{{user.admin}}" bind:chooseAvatarTap="changeAvatar" bind:userLogin="gotoLogin" bind:posterTap="changePoster"  />
+
+    <view class="cu-list grid col-5 no-border padding-lr-xs radius-lg-top theme-color" style="transform: translateY(-18rpx);">
+      <view class="cu-item text-black" bindtap="bindArticle" hover-class="font-hover">
+        <view class="text-bold text-xxl" >
+          {{otherInfo.articleCount}}
+        </view>
+        <text>帖子</text>
+      </view>
+
+      <view class="cu-item text-black" bindtap="bindComment" hover-class="font-hover">
+        <view class="text-bold text-xxl">
+          {{otherInfo.commentCount}}
+        </view>
+        <text>评论</text>
+      </view>
+
+      <view class="cu-item text-black" bindtap="bindCollect" hover-class="font-hover">
+        <view class="text-bold text-xxl">
+          {{otherInfo.collectCount}}
+        </view>
+        <text>收藏</text>
+      </view>
+    </view>
+
+    <view class="cu-list menu card-menu sm-border margin-top margin-bottom-xl shadow radius-lg">
+
+      <view class="cu-item arrow" style="transition:none" hover-class="highSelectColor" bindtap="societyRule">
+        <view class="content">
+          
+          <text class="cuIcon-formfill text-blue"></text>
+          <text>社区规范</text>
+        </view>
+      </view>
+
+      <view class="cu-item arrow" style="transition:none" hover-class="highSelectColor" bindtap="openSetting">
+        <view class="content">
+          <text class="cuIcon-settingsfill text-blue"></text>
+          <text>设置</text>
+        </view>
+      </view>
+
+      <button class="cu-item arrow removeButton" style="justify-content: flex-start;" openType="share" >
+        <view class="content" style="justify-content: flex-start; display:flex;">
+          <text class="cuIcon-share text-blue"></text>
+          <text>分享</text>
+        </view>
+      </button>
+
+      <view class="cu-item arrow" style="transition:none" hover-class="highSelectColor" >
+        <button class="removeButton content" openType="contact">
+          <view class="content">
+            <text class="cuIcon-service text-blue"></text>
+            <text>客服</text>
+          </view>
+        </button>
+      </view>
+
+      <view class="cu-item arrow" style="transition:none" hover-class="highSelectColor" >
+        <button class="removeButton content" openType="feedback">
+          <view class="content">
+            <text class="cuIcon-write text-blue"></text>
+            <text>意见反馈</text>
+          </view>
+        </button>
+      </view>
+      
+    </view>
+  </scroll-view>
+
+</view>
+
+<privacy/>

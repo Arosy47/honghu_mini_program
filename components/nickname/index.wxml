@@ -1,0 +1,9 @@
+
+
+<view style="display: flex; align-items: center;">
+  <view hover-stop-propagation="{{isLink}}" hover-class="{{isLink?'highSelectColor':''}}" class="{{isAnon ? 'nickname-anon' : 'nickname'}} nickname-class" style="font-size: {{size}}rpx;" data-user-id="{{userId}}" catchtap="{{isLink ? 'onNicknameTap' : 'doNothing'}}" >{{nickname}}</view>
+
+  <view wx:if="{{blueV&&!isAnon}}" class="blue-v-badge-nickname" style="margin-left: 8rpx;">
+    <view class="blue-v-icon-nickname">V</view>
+  </view>
+</view>

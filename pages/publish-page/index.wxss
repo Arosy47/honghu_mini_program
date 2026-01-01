@@ -1,0 +1,102 @@
+
+page{
+  height: 100%;
+  background-color: white;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.card-group{
+  flex: 1;
+  
+}
+
+.footer{
+  padding:50rpx
+}
+
+.card1{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  background-color: #f1fbff;
+  border-radius: 50rpx;
+  
+}
+
+.card2{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  background-color: #e7ffe4;
+  border-radius: 50rpx;
+  
+}
+
+.card3{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  background-color: #fff4dd;
+  border-radius: 50rpx;
+  
+}
+
+.card4{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding:50rpx 30rpx 50rpx 30rpx;
+  background-color: #ffe60f;
+
+  border-radius: 50rpx;
+  
+}
+
+.icon{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color:#333;
+}
+
+.word{
+
+  transition: all .6s ease-in-out 0s;
+  
+}
+
+.word.arrow {
+	padding-right: 40rpx
+}
+
+.word.arrow:before {
+	position: absolute;
+	top: 0;
+	right: 30rpx;
+	bottom: 0;
+	display: block;
+	margin: auto;
+	width: 30rpx;
+	height: 30rpx;
+	color: var(--grey);
+	content: "\e6a3";
+	text-align: center;
+	font-size: 34rpx;
+	font-family: "cuIcon";
+	line-height: 30rpx
+}
+

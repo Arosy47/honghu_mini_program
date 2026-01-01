@@ -1,0 +1,17 @@
+
+<view class="nav" style="height:{{navBarHeight}}px; background: url();">
+  
+  <view class="capsule-box" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBottom}}px;">
+    <view class="nav-handle">
+      <view class="back">
+      	
+      	<image src=""></image>
+      </view>
+      <view class="home">
+      	
+      	<image src=""></image>
+      </view>
+    </view>
+    <view class="nav-title">导航标题</view>
+  </view>
+</view>

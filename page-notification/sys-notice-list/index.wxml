@@ -1,0 +1,28 @@
+
+
+<import src="/templates/nodata.wxml" />
+
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content">{{noticeType}}</view>
+</cu-custom>
+
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-orange"></view>
+</view>
+
+<view class="topic-list">
+  <view wx:for="{{notifications}}" wx:key="id">
+  	<sys-notice-item topic-item-class="topic-item" notification="{{item}}" data-index="{{index}}" bind:moreIconTap="showActions" bind:commentIconTap="gotoTopicDetail" bind:starIconTap="onStarTap" bind:viewIconTap="gotoTopicDetail" />
+    <view class="l1"></view>
+  </view>
+
+  <view style="padding: 20rpx 40rpx; background-color: white;">
+    <view style="font-weight: bold; margin-bottom: 10rpx;">终于等到你，在红狐生态圈记录自己吧</view>
+    <view style="font-weight: normal; color: rgb(117, 116, 116); font-size: 23rpx;margin-bottom: 20rpx;">期待你在这里留下校园生活的点点滴滴！</view>
+    <text style="font-size: 21rpx; color: rgb(185, 182, 182); ">{{userInfo.createTime}}</text>
+  </view>
+  <view class="l1"></view>
+  
+</view>
+
+<view style="height: 200rpx;"></view>

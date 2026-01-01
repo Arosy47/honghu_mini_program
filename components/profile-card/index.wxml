@@ -1,0 +1,87 @@
+
+
+<view class="bg-image" style="opacity: {{(600-scrollTop)/600}}">
+ 
+  <image src="{{avatarUrl+'!article_medium'}}" mode="aspectFill"/>
+
+  <view class="overlay"></view>
+
+  <view class="text-content">
+    <cu-custom isBack="{{visit}}" > 
+      <view slot="content"></view>
+    </cu-custom>
+
+    <view class="flex padding">
+      
+      <view class="padding-lr-xs">
+
+        <view class="cu-avatar xl round">
+
+          <image mode="aspectFill" class="avatar-wrapper avatar" src="{{avatarUrl+'!article_small'}}" catchtap="previewImage" />       
+
+          <view wx:if="{{!admin&&user.gender != 2}}" class="gender-box {{user.gender === 1 ? 'male' : 'female'}}">
+            <image class="gender-icon" src="../../images/icon_gender/{{user.gender === 1 ? 'icon_male' :'icon_female' }}.png" />
+          </view>
+
+          <image wx:if="{{admin}}" src="/images/viplogo.png" mode="aspectFill" style="position: absolute; z-index: 1000; bottom: 0; right: 0; width: 35rpx; height: 35rpx;"/>
+
+        </view>
+      </view>
+
+      <view class="padding-xs text-xl whitecolor" style="display: flex; flex-direction: column; justify-content: space-around; width: 100%;">
+        <view style="display: flex; justify-content: flex-start; align-items: center;">
+          <text class="nickname">{{isMf? user.anonymousName : user.nickName}}</text>
+          
+          <view wx:if="{{user.blueV}}" class="blue-v-badge-inline">
+            <view class="blue-v-icon-inline">V</view>
+          </view>
+          <view wx:if="{{user.authStatus=='认证完成'}}" class="auth-tag" >已认证</view>
+        </view>
+        <view wx:if="{{!isMf}}" style="display:flex; align-items: center; justify-content: flex-start;">
+          <view wx:if="{{!visit}}" class="tag" style="font-size: 25rpx;border-radius: 30rpx; padding: 5rpx 15rpx; margin:0 20rpx 0 0; color: white;" bind:tap="chooseStrollSchool" hover-class="highSelectColor">
+            <text class="cuIcon-order" style="transform: rotate(90deg); margin-right: 5rpx;"></text>
+            {{user.strollSchoolName?user.strollSchoolName:'请选择学校'}}
+          </view>
+          
+          <view wx:elif="{{user.schoolName && user.userId!=7777777}}" class="tag" style="font-size: 25rpx;border-radius: 30rpx; padding: 5rpx 15rpx; margin:0 20rpx 0 0; color: white;">
+            {{user.schoolName}}
+          </view>
+          
+          <view style="font-size: 20rpx; font-weight: 200; margin-top: 10rpx;">ID: {{user.userId}}</view>
+          
+        </view>
+        
+      </view>
+
+      <view class="kaoyou">
+
+        <text wx:if="{{!isSelf}}" class="cuIcon-more" style="font-size: 35rpx;" bind:tap="moreAction"></text>
+        <view>
+
+          <view wx:if="{{user.accountStatus==='正常'&&!isSelf&&selfUser.userId===7777777}}" class="cu-tag round lg " style="background-color: rgb(223, 103, 103); font-weight: bold;padding: 30rpx;" bindtap="banUser">
+            <view>封禁</view>
+          </view>
+          <view wx:elif="{{user.accountStatus!=='正常'&&!isSelf&&selfUser.userId===7777777}}" class="cu-tag round lg " style="background-color: rgb(64, 133, 76);font-weight: bold;padding: 30rpx;" bindtap="unbanUser">
+            <view>解封</view>
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+
+    <view wx:if="{{!isMf}}" style="margin-bottom: 20rpx; margin-left: 20rpx;">
+      <text class="signature whitecolor">{{user.motto ? user.motto : defaultSignature}}</text>
+    </view>
+
+    <view class="operation" wx:if="{{!isMf}}">
+      
+      <button wx:if="{{isSelf}}" class="cu-btn line-white round block margin-tb-sm lg" style="width: 650rpx; font-weight: bold; margin-left: 20rpx; margin-right: 20rpx" bind:tap="{{user.userId ? 'gotoUserEdit' : 'gotoLogin'}}">{{user.userId ? '设置个人资料' : '登录'}}</button>
+
+      <button wx:if="{{!isSelf}}" class="cu-btn line-white round block margin-tb-sm lg" style="width: 950rpx; font-weight: bold; margin-left: 20rpx; margin-right: 20rpx" bind:tap="lookUserInfo">查看用户资料</button>
+
+    </view>
+  </view>
+</view>
+

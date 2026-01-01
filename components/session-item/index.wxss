@@ -1,0 +1,66 @@
+
+
+.right-content {
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 84rpx;
+
+  padding-top: 10rpx;
+}
+
+.avatar{
+  height: 84rpx; 
+  width: 84rpx; 
+  position: absolute ;
+  top: 21rpx;
+  left: 28rpx; 
+  border-radius: 50%;
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content-text-one-line {
+  color: #777777;
+  
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.l1 {
+  width: 80%;
+  border-bottom: 1rpx solid #000;
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+  margin-left: 130rpx;
+  
+}
+
+.abcd{
+  position: relative;
+  display: flex;
+  padding-right: 10rpx;
+  height: 126rpx;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.content{
+  position: absolute;
+  left: 133rpx;
+  width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
+}
+
+.nickNime{
+  font-size: 29rpx;
+  color: #181818;
+}

@@ -1,0 +1,18 @@
+
+.nav {
+  position: relative;
+  background: chartreuse;
+}
+.capsule-box {
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+.nav-title {
+	height: 100%;
+	width: 50%;
+	margin: 0 auto; 
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

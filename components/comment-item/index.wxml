@@ -1,0 +1,159 @@
+
+
+<view class="container-item" style="padding-bottom: 15rpx;"  hover-class='highSelectColor' catchtap="{{comment.hasDelete?'':'onCommentItemTap'}}" catch:longpress="{{comment.hasDelete?'':'onCommentItemLongTap'}}" data-reply_type="1" data-nick_name='{{comment.userNickName}}' data-cid='{{comment.id}}' data-to_user_id='{{comment.userId}}' data-parent_id="{{comment.parentCommentId}}" data-comment_text="{{comment.content}}">
+
+  <avatar anonymous="{{topic.anonymous}}" src="{{comment.avatar}}" is-link="{{!topic.anonymous}}" user-id="{{comment.userId}}" size="75" gray="{{comment.hasDelete}}" admin="{{admin}}" blue-v="{{comment.blueV}}" />
+
+  <view class="item_right">
+    <view class="right_content" >
+      <view class="fu_comment" >
+        <view style="display: flex; justify-content: flex-start; align-items: center;">
+
+          <nickname class="right_name" nickname-class="nickname-class" nickname="{{comment.userNickName}}" size="22" length="16" user-id="{{comment.userId}}" is-link="{{false}}" isAnon="{{topic.anonymous}}" />
+
+          <view wx:if="{{topic.userId === comment.userId}}" class="tag">楼主</view>
+          <view class="right_content_txt2">{{comment.createTime}}</view>
+        </view>
+
+        <view class="content">
+          <view wx:if="{{!comment.hasDelete}}" >
+            
+            <rich-text nodes="{{richContent}}" class="right_content_txt" style="font-size: 28rpx;" ></rich-text>
+
+            <view wx:if="{{comment.imgUrl}}" style="display: inline-block;" hover-stop-propagation="true">
+              <image class="comment-image" style="height: {{comment.imgUrl.height}}rpx; width: {{comment.imgUrl.width}}rpx; "  src="https://{{comment.imgUrl.url}}!article_small" data-src="https://{{comment.imgUrl.url}}" catchtap="previewImage" mode="{{comment.imgUrl.imageMode}}"></image>
+            </view>
+          </view>
+          
+          <text wx:if="{{comment.hasDelete}}" class="right_content_delete" >评论已被删除</text>
+        </view>
+        
+      </view>
+
+    </view>
+  </view>
+
+  <view wx:if="{{!isOrganization&&!comment.hasDelete}}" style="position: absolute;right:20rpx;display: flex; flex-direction:column; align-items:center; width: 80rpx; padding-top: 20rpx;" hover-stop-propagation="true" data-user_id='{{comment.userId}}' data-cid='{{comment.id}}' data-commentModel='{{comment}}' data-type="parentComment" catchtap = "onThumbUp">
+
+    <image class="item-icon" animation="{{parentAnimationData}}" src="../../images/icon_favor/{{comment.thumbUpStatus ? 'heart_fill' : 'heart'}}.png" />
+    
+    <view class="item-text">{{comment.thumbUpCount>0?comment.thumbUpCount:" "}}</view>
+
+  </view>
+  
+</view>
+
+<view wx:if="{{comment.replyList && expand &&list2.parentCommentId == comment.id}}" class="reply-region" hover-class='highSelectColor' wx:for="{{replyList}}" wx:for-item="list2" wx:key="id" catchtap="{{list2.hasDelete?'':'onCommentItemTap'}}" catch:longpress="{{list2.hasDelete?'':'onCommentItemLongTap'}}" data-sub_index="{{index}}" data-reply_type="2" data-nick_name='{{list2.userNickName}}' data-cid='{{list2.id}}' data-to_user_id='{{list2.userId}}' data-parent_id="{{list2.parentCommentId}}" data-comment_text="{{list2.hasDelete?'评论已被删除':list2.content}}" >
+
+  <view style="display: flex;align-items: center;height: 38px;">
+    <avatar anonymous="{{topic.anonymous}}" src="{{list2.avatar}}" user-id="{{list2.userId}}" size="50" gray="{{list2.hasDelete}}" is-link="{{!topic.anonymous}}" admin="{{list2.admin}}" blue-v="{{list2.blueV}}" />
+  </view>
+ 
+  <view class="reply_right">
+
+    <view style="display: flex; justify-content: flex-start; align-items: center;">
+
+      <nickname class="right_name" nickname-class="nickname-class" nickname="{{list2.userNickName}}" size="22" user-id="{{list2.userId}}" is-link="{{false}}" isAnon="{{topic.anonymous}}" />
+
+      <view wx:if="{{topic.userId === list2.userId}}" class="tag" >楼主</view>
+      <view class="right_content_txt2">{{list2.createTime}}</view>
+    </view>
+
+    <view wx:if="{{list2.replyCommentId == list2.parentCommentId}}">
+
+      <view wx:if="{{!list2.hasDelete}}" >
+        <rich-text nodes="{{list2.richContent}}" class="right_content_txt" style="font-size: 28rpx;" ></rich-text>
+        
+        <view wx:if="{{list2.imgUrl}}" style="display: inline-block;" hover-stop-propagation="true">
+          <image class="comment-image" style="height: {{list2.imgUrl.height}}rpx; width: {{list2.imgUrl.width}}rpx;" src="https://{{list2.imgUrl.url}}!article_small" data-src="https://{{list2.imgUrl.url}}" catchtap="previewImage" mode="{{list2.imgUrl.imageMode}}"></image>
+        </view>
+      </view>
+      <text wx:if="{{list2.hasDelete}}" class="right_content_delete" >评论已被删除</text>
+    </view>
+
+    <view wx:elif="{{list2.toUserNickName != '' && list2.replyCommentId != list2.parentCommentId}}">
+
+      <view class="right_content_txt">
+
+        <block wx:if="{{!list2.hasDelete}}">
+          <rich-text nodes="{{list2.richContent}}" style="font-size: 28rpx;" ></rich-text>
+
+          <view wx:if="{{list2.imgUrl}}" style="display: inline-block;" hover-stop-propagation="true">
+            <image class="comment-image" style="height: {{list2.imgUrl.height}}rpx; width: {{list2.imgUrl.width}}rpx;"  src="https://{{list2.imgUrl.url}}!article_small" data-src="https://{{list2.imgUrl.url}}" catchtap="previewImage" mode="{{list2.imgUrl.imageMode}}"></image>
+          </view>
+        </block>
+
+        <text wx:if="{{list2.hasDelete}}" class="right_content_delete" >评论已被删除</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!isOrganization&&!list2.hasDelete}}" style="position: absolute;right:20rpx;display: flex; flex-direction:column;align-items:center; width: 80rpx; padding-top: 20rpx;" hover-stop-propagation="true" data-user_id='{{list2.userId}}' data-cid='{{list2.id}}' data-commentModel='{{list2}}' data-index="{{index}}" data-type="reply" catchtap = "onThumbUp">
+
+    <image class="item-icon" animation="{{list2.thumbUpAnimationData}}" src="../../images/icon_favor/{{list2.thumbUpStatus ? 'heart_fill' : 'heart'}}.png" />
+
+    <view class="item-text">{{list2.thumbUpCount>0?list2.thumbUpCount:" "}}</view>
+
+  </view>
+
+</view>
+
+<view wx:if="{{comment.replyList && !expand &&list2.parentCommentId == comment.id}}" class="reply-region" hover-class='highSelectColor' wx:for="{{subCommentList}}" wx:for-item="list2" wx:key="id" catchtap="{{list2.hasDelete?'':'onCommentItemTap'}}" catch:longpress="{{list2.hasDelete?'':'onCommentItemLongTap'}}" data-reply_type="2" data-nick_name='{{list2.userNickName}}' data-cid='{{list2.id}}' data-to_user_id='{{list2.userId}}' data-parent_id="{{list2.parentCommentId}}" data-comment_text="{{list2.hasDelete?'评论已被删除':list2.content}}" >
+
+  <view style="display: flex;align-items: center;height: 38px;">
+    <avatar anonymous="{{topic.anonymous}}" src="{{list2.avatar}}" user-id="{{list2.userId}}" size="50" gray="{{list2.hasDelete}}" is-link="{{!topic.anonymous}}" admin="{{list2.admin}}" blue-v="{{list2.blueV}}" />
+  </view>
+  <view class="reply_right">
+
+    <view style="display: flex; justify-content: flex-start; align-items: center;">
+      
+      <nickname class="right_name" nickname-class="nickname-class" nickname="{{list2.userNickName}}" size="22" user-id="{{list2.userId}}" is-link="{{false}}" isAnon="{{topic.anonymous}}" />
+      
+      <view wx:if="{{topic.userId === list2.userId}}" class="tag" >楼主</view>
+      <view class="right_content_txt2">{{list2.createTime}}</view>
+    </view>
+    
+    <view wx:if="{{list2.replyCommentId == list2.parentCommentId}}">
+
+      <view wx:if="{{!list2.hasDelete}}" >
+        <rich-text wx:if="{{!list2.hasDelete}}" class="right_content_txt" nodes="{{list2.richContent}}" style="font-size: 28rpx;" ></rich-text>
+        <view wx:if="{{list2.imgUrl}}" style="display: inline-block;" hover-stop-propagation="true">
+          <image class="comment-image" style="height: {{list2.imgUrl.height}}rpx; width: {{list2.imgUrl.width}}rpx;"  src="https://{{list2.imgUrl.url}}!article_small" data-src="https://{{list2.imgUrl.url}}" catchtap="previewImage" mode="{{list2.imgUrl.imageMode}}"/>
+        </view>
+        
+      </view>
+
+      <text wx:if="{{list2.hasDelete}}" class="right_content_delete" >评论已被删除</text>
+    </view>
+
+    <view wx:elif="{{list2.toUserNickName != '' && list2.replyCommentId != list2.parentCommentId}}">
+      <view class="right_content_txt">
+
+        <block wx:if="{{!list2.hasDelete}}">
+          <rich-text nodes="{{list2.richContent}}" style="font-size: 28rpx;" ></rich-text>
+
+          <view wx:if="{{list2.imgUrl}}" style="display: inline-block;" hover-stop-propagation="true">
+            <image class="comment-image" style="height: {{list2.imgUrl.height}}rpx; width: {{list2.imgUrl.width}}rpx;" src="https://{{list2.imgUrl.url}}!article_small" data-src="https://{{list2.imgUrl.url}}" catchtap="previewImage" mode="{{list2.imgUrl.imageMode}}"></image>
+          </view>
+        </block>
+
+        <text wx:if="{{list2.hasDelete}}" class="right_content_delete" >评论已被删除</text>
+      </view>
+    </view>
+    
+  </view>
+  <view wx:if="{{!isOrganization&&!list2.hasDelete}}" style="position: absolute;right:20rpx;display: flex; flex-direction:column;align-items:center; width: 80rpx; padding-top: 20rpx;" hover-stop-propagation="true" data-user_id='{{list2.userId}}' data-cid='{{list2.id}}' data-commentModel='{{list2}}' data-index="{{index}}" data-type="reply" catchtap = "onThumbUp">
+
+    <image class="item-icon" animation="{{list2.thumbUpAnimationData}}" src="../../images/icon_favor/{{list2.thumbUpStatus ? 'heart_fill' : 'heart'}}.png" />
+
+    <view class="item-text">{{list2.thumbUpCount>0?list2.thumbUpCount:" "}}</view>
+
+  </view>
+
+</view>
+
+<view wx:if="{{comment.replyList&&comment.replyList.length>2&&!expand}}" hover-stop-propagation="true" style="margin-left: 170rpx; display:inline-flex;">
+  <text class="content-text-expand" catchtap="onExpandTap">展开{{comment.replyList.length-2}}条评论</text>
+
+</view>
+
+<view class="l1"></view>

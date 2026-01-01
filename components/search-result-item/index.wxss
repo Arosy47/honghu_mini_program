@@ -1,0 +1,47 @@
+
+
+.content{
+  
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  margin-bottom: 0rpx;
+  padding-right: 20rpx;
+}
+
+.bottom-item{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.avatar-wrapper {
+  padding: 0 !important;
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+}
+
+.avatar-wrapper::after {
+  border: none;
+}
+
+.l1 {
+  width: 100%;
+  border-bottom: 1rpx solid #000;
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+
+}
+
+.nickname-class{
+  margin-left: 10rpx;
+  color: #333333 !important;
+  font-weight: normal !important;
+}
+

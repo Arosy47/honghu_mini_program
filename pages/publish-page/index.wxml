@@ -1,0 +1,19 @@
+
+
+<view class="container">
+  <view class="card-group">
+
+  </view>
+  <view class="footer">
+    <view class="card4" bind:tap="goTopicEdit">
+      <image src="https://cdn.honghu.com/sysImg/camera.png!article_small" class="icon"/>
+      
+      <view>
+        <text>发帖</text>
+        <view>分享一下吧</view>
+      </view>
+      <text class="cuIcon-right color-gray" style="margin-left: auto;"></text>
+    </view>
+  </view>
+
+</view>

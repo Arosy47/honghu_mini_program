@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vote-item": "../vote-item/index"
+  }
+}

@@ -1,0 +1,33 @@
+
+<view hover-class='highSelectColor' bind:tap="gotoSystemNotice" bind:longpress="delete">
+
+  <view class="abcd" >
+
+    <view class="sysNoticeIcon" style="background-color: rgb(85, 175, 228); border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+      <view class="cuIcon-notificationfill text-white">
+        
+      </view>
+    </view>
+
+    <view class="content">
+      <view class="nickNime">系统通知</view>
+      <view class="content-text-one-line" style="font-size: 24rpx; color: #a5a5a5;">
+
+        {{newSysNoticeContent}}
+
+      </view>
+    </view>
+
+    <view class="right-content">
+      <view class="text-xs" style="color: #bdbdbd;">{{'时间'}}</view>
+
+      <view class="cu-tag round bg-red sm" wx:if="{{badge!=0}}">
+          <block>{{badge>99?"99+":badge}}</block>
+      </view>    
+    </view>
+
+  </view>
+  
+</view>
+<view class="l1"></view>
+

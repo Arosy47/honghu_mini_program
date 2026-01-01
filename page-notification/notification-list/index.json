@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "notification-item": "/page-notification/components/notification-item/index"
+  }
+}

@@ -1,0 +1,19 @@
+.DS_Store
+node_modules/
+package-lock.json
+yarn.lock
+
+# 微信开发者工具
+project.private.config.json
+miniprogram_npm/
+
+# Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.idea/
+.vscode/
+*.swp
+

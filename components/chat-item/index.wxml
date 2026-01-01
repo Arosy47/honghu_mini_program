@@ -1,0 +1,67 @@
+
+
+<view class="{{reverse?'chat-item-reverse':'chat-item'}}">
+  <view wx:if="{{chat.type === 'TEXT'}}" class="chat {{isOwner? 'reverse' : ''}}">
+    
+    <avatar src="{{avatar}}" chatting="{{true}}" circle="{{true}}" isLink="{{!anonymous}}" user-id="{{chat.fromUserId}}" size="80" blue-v="{{blueV}}" />
+    <view class="message" catch:longpress="copy" data-content="{{chat.content}}">
+
+      <rich-text nodes="{{richContent}}" class="{{isOwner ? 'content-right' : 'content-left'}}" ></rich-text>
+      <view class="time-text {{isOwner ? 'text-right' : 'text-left'}}">{{createTime}}</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{chat.type === 'MATCH_CARD_SUCCESS'}}" class="chat" style="justify-content: center; align-items: center;">
+
+    <view style="position: relative; border-radius: 20rpx; overflow: hidden;">
+      <view class="img-overlay" style="padding: 10rpx;">
+        <view class="maxLen" style="color: white; font-size: 18rpx;">{{chat.slideCard.content}}</view>
+        
+      </view>
+      <image style="height: 300rpx; width: 200rpx;" src="https://cdn.honghu.com/sysImg/match_card_default_img/img1.jpg!article_big" mode="aspectFill"/>
+    </view>
+
+    <view style="font-weight: bolder; margin:20rpx">匹配成功<text style="font-size: 25rpx;color: red;">♥</text></view>
+   
+    <view style="position: relative;border-radius: 20rpx; overflow: hidden">
+      <view class="img-overlay" style="padding:10rpx;">
+        <view class="maxLen" style="color: white; font-size: 18rpx;">{{chat.beSlideCard.content}}</view>
+        
+      </view>
+      <image style="height: 300rpx; width: 200rpx;" src="https://cdn.honghu.com/sysImg/match_card_default_img/img1.jpg!article_big" mode="aspectFill"/>
+    </view>
+
+  </view>
+
+  <view wx:elif="{{chat.type === 'IMAGE'}}" class="chat {{isOwner ? 'reverse' : ''}}">
+    <avatar src="{{avatar}}" chatting="{{true}}" circle="{{true}}" isLink="{{!anonymous}}" user-id="{{chat.fromUserId}}" size="80" blue-v="{{blueV}}" />
+    <view class="message">
+
+      <image lazy-load class="chat-images" style="height: {{imgHeight}}rpx; width: {{imgWidth}}rpx;" src="{{imgUrl}}" catchtap="previewImage" mode="{{imageMode}}"></image>
+      <view class="time-text {{isOwner ? 'text-right' : 'text-left'}}">{{createTime}}</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{chat.type === 'MATCH_CARD'}}" class="chat {{isOwner ? 'reverse' : ''}}">
+    <avatar src="{{avatar}}" chatting="{{true}}" circle="{{true}}" isLink="{{!anonymous}}" user-id="{{chat.fromUserId}}" size="80" blue-v="{{blueV}}" />
+    <view class="message">
+
+      <view catchtap="gotoCardDetail" style="position: relative; border-radius: 30rpx; overflow: hidden;">
+        <image lazy-load style="height: 360rpx; width: 250rpx;" src="{{'https://'+ matchcard.imgUrlList[0].url}}" mode="aspectFill"></image>
+
+        <view class="img-overlay">
+          <rich-text class="maxLen" style="color: white; font-size: 20rpx;" nodes="{{matchcard.content}}"></rich-text>
+        </view>
+      </view>
+      <view class="time-text {{isOwner ? 'text-right' : 'text-left'}}">{{createTime}}</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{chat.type === 'TIP'}}" class="chat">
+    <view class="tip">{{fromUserName + chat.content}}</view>
+  </view>
+
+  <view wx:elif="{{chat.type === 'TIME'}}" class="chat">
+    <view class="tip">{{chat.content}}</view>
+  </view>
+</view>

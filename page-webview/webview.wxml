@@ -1,0 +1,8 @@
+
+
+<cu-custom style="z-index: 1000;" bgColor="theme-color" isBack="{{true}}">  
+  
+  <view slot="content">红狐生态圈</view>
+</cu-custom>
+
+<image src="{{imgUrl}}" mode="widthFix" style="width: 100%;" 	show-menu-by-longpress catch:tap="preview" data-src="{{imgUrl}}" />

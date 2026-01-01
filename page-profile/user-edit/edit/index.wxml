@@ -1,0 +1,88 @@
+
+
+<cu-custom bgColor="theme-color-gray" isBack="{{true}}">
+  <view slot="content"></view>
+</cu-custom>
+
+<view wx:if="{{operation == 'editNickName'}}" >
+
+  <input placeholder="请输入昵称" value="{{user.nickName}}" class="edit-input" bindfocus="InputFocus" bindblur="blur" confirm-hold confirm-type="done"  bindinput="setNickName" adjust-position="{{true}}"  maxlength="16" cursor-spacing="10" />
+
+  <text style="margin-left: 20rpx; color: gray; font-size:25rpx;">"{{'请设置2-16个字符，不包含@<>/等无效字符哦'}}"</text>
+
+  <view class="padding flex flex-column bg-gray margin-sm radius-lg">
+    <button bindtap="saveNickName" class="cu-btn margin-tb-sm lg" style="background-color: #eb7a76; color: white;">保存</button>
+  </view>
+</view>
+
+<view wx:if="{{operation == 'editPhone'}}" style="height: 800rpx;display: flex; justify-content: space-around;align-items: center; flex-direction: column;">
+
+  <image wx:if="{{user.phone}}" style="height: 200rpx;width: 200rpx;" src="https://cdn.honghu.com/sysImg/phone_authed.webp" mode="aspectFill"/>
+
+  <image wx:else style="height: 200rpx;width: 200rpx;" src="https://cdn.honghu.com/sysImg/phone_auth.webp" mode="aspectFill"/>
+
+  <text wx:if="{{user.phone}}" style="text-align: center; font-size: 35rpx;font-weight: bold;">已绑定手机号：{{user.phone}}</text>
+
+  <text wx:else style="text-align: center; font-size: 35rpx;font-weight: bold;">当前未绑定手机号</text>
+  
+  <button loading="{{phoneLoading}}" wx:if="{{user.phone}}" style="width: 80%; background-color: #cca7a7; color: white; margin-top: 260rpx;" open-type="getPhoneNumber" bindgetphonenumber="certificatePhone">
+    更换手机号
+  </button>
+
+  <button loading="{{phoneLoading}}" wx:else style="width: 80%; background-color: 'cca7a7'; color: white" open-type="getRealtimePhoneNumber" bindgetrealtimephonenumber="certificatePhone">
+    点击绑定手机号
+  </button>
+ 
+</view>
+
+<view wx:if="{{operation == 'editMotto'}}">
+  <textarea name="remark" class="edit-input-textarea" value="{{user.motto}}" placeholder="请输入个性签名" placeholder-class='placeholder' maxlength='40' bindinput='setMotto' confirm-type="done" ></textarea>
+
+  <text style="margin-left: 20rpx; color: gray; font-size:25rpx;">"{{'请设置少于30个字符，不包含@<>/等无效字符哦'}}"</text>
+
+  <view class="padding flex flex-column bg-gray margin-sm radius-lg">
+    <button bindtap="saveMotto" class="cu-btn margin-tb-sm lg" style="background-color: #eb7a76; color: white;">保存</button>
+  </view>
+</view>
+
+<view wx:if="{{operation == 'editGender'}}">
+  <view class='sell_cells'>
+    <view class="sell_cell" style="height: 120rpx;" data-gender="1" bindtap="onChangeGenderTap" >
+      <text class="sell_title">男</text>
+      
+      <text wx:if="{{user.gender==1}}" class="cuIcon-title" style="color: rgb(71, 196, 253);"></text>
+    </view>
+    <view class="sell_cell" style="height: 120rpx;" data-gender="0"  bindtap="onChangeGenderTap" >
+      <text class="sell_title">女</text>
+      
+      <text wx:if="{{user.gender==0}}" class="cuIcon-title" style="color: rgb(243, 106, 106);"></text>
+    </view>
+  </view>
+
+  <text style="margin-left: 40rpx; color: gray; font-size:25rpx;"><text style="color: red;">*</text>性别一旦确认不能修改，请慎重选择</text>
+</view>
+
+<view wx:if="{{operation == 'editPrivacy'}}">
+  <view class="sell_cell">
+    <text class="sell_title">公开我的帖子</text>
+    
+    <switch checked="{{!(hiddenArticle==true)}}" bindchange="onChangeShowArticle"/>
+    
+  </view>
+</view>
+
+<view wx:if="{{operation == 'editPrivacy'}}">
+  <view class="sell_cell">
+    <text class="sell_title">公开我的收藏</text>
+    
+    <switch checked="{{!(hiddenCollect==true)}}" bindchange="onChangeShowCollect"/>
+    
+  </view>
+ 
+</view>
+
+<view wx:if="{{operation == 'more'}}">
+
+</view>
+
+<privacy/>

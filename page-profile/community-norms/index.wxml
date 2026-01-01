@@ -1,0 +1,143 @@
+
+
+<cu-custom bgColor="theme-color" customBack="{{true}}" bind:back="back"> 
+  <text slot="backText" class="{{shareUserId?'cuIcon-homefill':'cuIcon-back'}}"></text>
+  <view slot="content">社区规范</view>
+</cu-custom>
+
+<view class="container">
+  
+  <view class="update-date">更新日期：2023.11.11</view>
+
+  <view class="section">
+    <text class="section-title">社区原则</text>
+    <rich-text class="subsection">
+      <text>1. 建设一个校园内的互助平台：用户在红狐生态圈发布二手、求助、交友等校园生活相关信息，同学们提供热心的帮助。
+        2. 友善、严肃、活波的交流：乐于助人，心怀感恩；尊重他人的观点，不攻击、不引战。
+
+        我们会毫不犹豫地移除不符合上述原则的用户，以构造优质的社区环境。</text>
+    </rich-text>
+  </view>
+
+  <view class="section">
+    <view>
+      <text class="section-title">违规行为</text>
+    </view>
+
+    <text class="subsection-title">1. 法律法规</text>
+      <view style="margin-left: 20rpx;">
+        <text class="subsection">1.1 反对宪法所确定的基本原则
+          1.2 危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一
+          1.3 损害国家荣誉和利益
+          1.4 煽动民族仇恨、民族歧视，破坏民族团结 
+          1.5 侮辱、滥用英烈形象，否定英烈事迹，美化粉饰侵略战争行为
+          1.6 破坏国家宗教政策，宣扬邪教和封建迷信
+          1.7散布谣言，扰乱社会秩序，破坏社会稳定
+          1.8 宣扬淫秽、色情、赌博、暴力、凶杀、恐怖或者
+        教唆犯罪
+          1.9 煽动非法集会、结社、游行、示威、聚众扰乱社会秩序
+          1.10 诽谤他人，泄露他人隐私，侵害他人合法权益
+          1.11捏造、攻击、嘲讽、戏谑、传播历任及现任党和国家领导人相关敏感信息
+          1.12 出售、传播翻墙相关信息
+          1.13 发布含有法律、行政法规禁止的其他内容的信息
+          1.14 发布上级监管部门禁止的危害平台安全的信息</text>
+      </view>
+
+    <text class="subsection-title">2. 违反校规</text>
+    <rich-text class="subsection" >
+      <view style="margin-left: 20rpx;">
+        <text>2.1 发布转课、卖课、有偿交易图书馆座位等
+          2.2 发布征集或者提供代课、代考、代写作业、代签到等作弊信息
+          2.3 盗用学校或学校部门、校内组织名义从事活动
+          2.4 其他通过校友圈组织、参与、宣扬的违反校规的行为
+        </text>
+      </view>
+    </rich-text>
+
+    <text class="subsection-title">3. 违反发帖要求</text>
+    <rich-text class="subsection" >
+      <view style="margin-left: 20rpx;">
+        <text> 3.1 发布姑子时未按照该分类的发贴要求提供必要信
+  息
+      3.2 发布求助类帖子时违反自查要求
+      3.3 发布闲置类帖子时违反自查要求
+        <text style="margin-left: 20rpx;">3.3.1 发布的闲置价格高于原购入价格
+        </text>
+        <text style="margin-left: 20rpx;">3.3.2 发布的闲置价格高于在其他平台的挂价
+        </text>
+        <text style="margin-left: 20rpx;">3.3.3 发布不符合国家相关法律和社区规定类别的闲
+        置
+        </text>
+        <text style="margin-left: 20rpx;">3.3.4 发布闲置时将书籍资料、仙女集市（美妆护肤）服包饰等展示受限分类混入其他分类
+        </text>
+      3.4 发布寻人类怗子时未说明来意或侵犯他人隐私
+      3.5 发布站子时错误分类或回避展示受限的分类
+      3.6 七天之内以同一账号、不同账号或跟帖等任意形式重复发布姑子 （寻物招领类除外）
+      3.7宠物领养只允许无偿领养，禁止商家机构或个人进行宠物销售行为
+        </text>
+      </view>
+    </rich-text>
+
+    <text class="subsection-title">4. 不友善的行为</text>
+    <rich-text class="subsection" >
+      <view style="margin-left: 20rpx;">
+        <text>  4.1 轻蔑：贬低、轻视他人及其芳动成果
+          4.2 诽谤：捏造、散布虚假事实，损害他人名誉
+          4.3 嘲讽：以比喻、夸张、侮辱性的手法对他人或其
+        行为进行揭露或描述，以此来激怒他人
+          4.4挑衅：以不友好的方式激怒他人，意图使对方对自己的言论作出回应，蓄意制造事端 
+          4.5 羞辱：贬低他人的能力、行为、生理或身份特征，让对方难堪
+          4.6 谩骂：以不文明的语言对他人进行负面评价
+          4.7 歧视：针对他人的民族、种族、宗教、性取向、性别、年龄、地域、生理特征、疾病、专业等身份或者归类的攻击
+          4.8 威胁：许诺以不良的后果来迫使他人服从自己的意志
+          4.9 欺诈：通过编造身份或事实，谋取利益、引发混乱或哗众取宠
+        </text>
+      </view>
+    </rich-text>
+
+     <text class="subsection-title">5. 发布垃圾信息、广告信息</text>
+    <rich-text class="subsection" >
+      <view style="margin-left: 20rpx;">
+        <text> 5.1 以商家、机构、微商、代理、代购、中介、黄牛等任何商业身份发布牟利或推广信息
+          5.2 以所谓出售闲置为名义的牟利行为
+          <text style="margin-left: 20rpx;">5.2.1 出售可轻易免费领取的物品、票卡或资格</text> 
+          5.3 有组织地以软文发布售卖产品、提供服务、宣传
+        推广等等内容的垃圾广告
+          <text style="margin-left: 20rpx;">5.3.1 以消费者或用户等身份发布的软文钓鱼贴</text>
+          <text>5.4 发布诱导用户点击、分享、点赞、集赞、评论、跳转、关注的引流营销内容
+            5.5 发布含有返利内容的推广链接、二维码等内容，返利范围包括金钱、U币、资格等
+            5.6 发布非校内相关的活动信息
+            5.7 通过快速发站、回帕、发布无意义图文等行为干扰社区秩序和用户体验
+            5.8 频繁回复过早时期的帖文，对他人造成千扰
+            5.9 频繁私聊骚扰他人，千扰社区秩序
+            5.10 发布诸如投票、助力、加速、砍价、测试、点赞等病毒营销类信息
+            5.11 发布饭圈、性别对立等经典对立话题
+          </text> 
+          
+        </text>
+      </view>
+    </rich-text>
+
+     <text class="subsection-title">6.发布色情低俗信息</text>
+    <rich-text class="subsection" >
+      <view style="margin-left: 20rpx;">
+        <text> 
+          6.1发布、索取、传播漏点图、性行为、性交易等相关色情图文、视频、网址等信息
+          6.2 发布约炮或相关性暗示等违规交友内容
+          <text style="margin-left: 20rpx;">6.2.1 非匿名状态下表达交友、恋爱等需求或倾向，但无明确要求足够信息，视作性暗示处理
+          </text> 
+          <text style="margin-left: 20rpx;">6.2.2 描述约炮、性虐待、性交易等经历或经验，视作性暗示处理
+          </text>
+          <text>6.3 发布细致描绘性行为或露骨自拍的内容
+            6.4发布血腥、恶俗、恐怖、自残等令人感到不适的低俗内容
+            6.5 在匿名模式下交友，索取或暴露联系方式
+            <text style="margin-left: 20rpx;"> 6.5.1 在匿名下交友，但采取捞人等方式规避匿名留联系方式
+            </text> 
+          </text> 
+          
+        </text>
+      </view>
+    </rich-text>
+
+  </view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "sys-notice-item": "../components/sys-notification-item/index"
+  }
+}

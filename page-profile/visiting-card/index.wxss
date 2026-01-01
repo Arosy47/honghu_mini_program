@@ -1,0 +1,29 @@
+
+
+page{
+  background-color: white;
+}
+
+.tabs {
+  
+}
+
+.tabs-line {
+  width: 30% !important;
+}
+
+.nothing {
+  
+}
+
+.tabs-fixed {
+  position: fixed;
+  top: 100rpx !important;
+
+  z-index: 99;
+}
+
+.l-content-class{
+
+}
+

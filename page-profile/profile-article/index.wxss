@@ -1,0 +1,9 @@
+
+
+Page {
+  background-color: #fff;
+}
+
+.margin-top-self {
+  margin-top: 90rpx;
+}

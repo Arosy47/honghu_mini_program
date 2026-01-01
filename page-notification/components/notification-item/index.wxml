@@ -1,0 +1,100 @@
+
+
+<view class="notification-item" hover-class='highSelectColor' bindtap="gotoTopicDetail">
+  <view class="header">
+
+    <avatar src="{{notification.avatar}}" is-link="{{!isAnon}}" user-id="{{notification.userId}}" size="80" />
+    <view class="header-text">
+      <view style="display: flex; justify-content: flex-start; align-items: center;">
+        
+        <view style="font-weight: bold;">{{notification.userNickName}}</view>
+        <view class="time">{{notification.createTime}}</view>
+
+        <text class="tag" wx:if="{{(notification.noticeType === 4||notification.noticeType === 2)&&notification.isOwner&&notification.articleCommentModel}}">作者</text> 
+        <text class="tag" wx:elif="{{notification.noticeType === 4&&notification.isOwner&&notification.organizationCommentModel}}">局长</text> 
+      </view>
+
+      <text class="message-content" wx:if="{{notification.noticeType === 1}}"><text class="message-tip">赞了你的帖子</text></text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 2}}"><text class="message-tip">赞了你的评论</text> </text>
+
+      <text class="message-content" wx:elif="{{notification.noticeType === 3}}"><text class="message-tip">评论了你的帖子</text></text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 4}}"><text class="message-tip">回复了你的评论</text> 
+      </text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 5}}"><text class="message-tip">收藏了你的帖子</text>
+      </text>
+
+      <text class="message-content" wx:elif="{{notification.noticeType === 11}}"><text class="message-tip">评论了你的组局</text></text>
+
+      <text class="message-content" wx:elif="{{notification.noticeType === 12}}"><text class="message-tip">加入了你的局</text></text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 13}}"><text class="message-tip">退出了你的局</text></text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 14}}"><text class="message-tip">解散了局</text></text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 15}}"><text class="message-tip">组局成功</text></text>
+
+      <text class="message-content" wx:elif="{{notification.noticeType === 21}}">接单</text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 22}}">取消接单</text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 23}}">快递送达</text>
+      <text class="message-content" wx:elif="{{notification.noticeType === 24}}">订单完成</text>
+    </view>
+  </view>
+
+  <rich-text class="n-content" style="margin-left: 0rpx;" wx:if="{{notification.noticeType === 3||notification.noticeType === 4||notification.noticeType === 11}}" nodes="{{richContent}}" class="right_content_txt" ></rich-text>
+
+  <view wx:if="{{notification.articleModel &&(notification.noticeType === 1||notification.noticeType === 3||notification.noticeType === 5)}}" >
+    <view class="topic" style="display: flex; justify-content: space-between;" wx:if="{{!notification.articleModel.hasDelete}}">
+      <view class="topic-left" style="width: 100%;">
+        
+        <text class="topic-content">{{notification.articleModel.content}}</text>
+      </view>
+      <view>
+        <image class="img" wx:if="{{imgUrlList.length > 0}}" src="{{imgUrlList[0]}}" mode="aspectFill" />
+      </view>
+
+    </view>
+    <view wx:else>
+      <view style="font-weight: lighter; color: gray;">原帖已删除</view>
+    </view>
+  </view>
+
+  <view wx:if="{{notification.organizationModel}}">
+    <view class="topic" style="display: flex; justify-content: space-between;" wx:if="{{!notification.organizationModel.hasDelete}}">
+      <view class="topic-left">
+        
+        <text class="topic-content">{{notification.organizationModel.content}}</text>
+      </view>
+      <view>
+        <image class="img" wx:if="{{imgUrlList.length > 0}}" src="{{imgUrlList[0]}}" mode="aspectFill" />
+      </view>
+    </view>
+    <view wx:else>
+      <view class="topic-left">
+        <text class="topic-content">{{notification.organizationModel.content}}</text>
+      </view>
+      
+    </view>
+  </view>
+
+  <view wx:if="{{notification.articleCommentModel}}" class="topic" >
+    <view class="topic-left">
+
+      <text wx:if="{{notification.articleCommentModel.content.length>0}}" class="topic-content">{{notification.articleCommentModel.content}}</text>
+      <text wx:if="{{notification.articleCommentModel.commentType=='PICTURE'}}">[图片]</text>
+
+    </view>
+  </view>
+
+  <view wx:if="{{notification.organizationCommentModel}}" class="topic" >
+    <view class="topic-left">
+
+      <text wx:if="{{notification.organizationCommentModel.content.length>0}}" class="topic-content">{{notification.organizationCommentModel.content}}</text>
+      <text wx:if="{{notification.organizationCommentModel.commentType=='PICTURE'}}">[图片]</text>
+    </view>
+  </view>
+
+  <view wx:if="{{notification.articleModel &&(notification.noticeType === 21||notification.noticeType === 22||notification.noticeType === 23||notification.noticeType === 24)}}" class="topic" >
+    <view class="topic-left" >
+    
+      <text class="topic-content">{{notification.articleModel.content}}</text>
+    </view>
+  </view>
+
+</view>

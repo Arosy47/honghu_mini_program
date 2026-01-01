@@ -1,0 +1,5 @@
+<view style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;color:#666;">
+  <text style="font-size:34rpx;margin-bottom:20rpx;">课表（Mock）</text>
+  <text style="font-size:26rpx;">这里是空页面，占位用</text>
+</view>
+

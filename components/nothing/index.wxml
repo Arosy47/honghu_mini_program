@@ -1,0 +1,6 @@
+
+
+<view class="nothing nothing-class">
+	
+	<text class="bg-tip">{{tip}}</text>
+</view>

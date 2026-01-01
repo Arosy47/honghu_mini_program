@@ -1,0 +1,56 @@
+.dialog {
+  margin:0;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom: 0;
+  
+  padding: 0rpx 15rpx;
+  background:#fff;
+  z-index:1999;
+  animation-duration: .3s;
+  animation-name: slideUp;
+
+  padding-bottom: env(safe-area-inset-bottom); 
+}
+.dialog-bg {
+  background:rgba(0, 0, 0, 0.705);
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  z-index: 98;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.emoji {
+  width: 74rpx;
+  height: 74rpx;
+  margin: 15rpx 15rpx;
+}
+
+.pop-indicator {
+  background-color: #E9EBEE;
+  height: 10rpx;
+  width: 68rpx;
+  margin: 3rpx auto;
+  border-radius: 19rpx;
+}

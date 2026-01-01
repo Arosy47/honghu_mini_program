@@ -1,0 +1,57 @@
+<view class="vote" hover-stop-propagation="true" style="padding-right: 15rpx;margin-right: 20rpx;" >
+  <view wx:if="{{isEnd || userVoted}}" style="display: flex; flex-direction: column; align-items: center;">
+  
+    <view wx:for="{{voteOptionList}}" wx:key="index" style="position:relative; width: 100%; background-color: transparent; margin:10rpx 0 10rpx 0; padding: 0rpx 0rpx 0rpx 0; font-size: 26rpx; display: flex; align-items: center; justify-content: space-between; min-height: 60rpx; background-color: white;">
+      
+      <view style="position: absolute;background-color:{{item.userVoteStatus?'#d8dae6':'#e5e5e5'}} ; width:{{showww? 100*item.rateValue+'%':0+'%'}};height: 100%;z-index: 0; transition: width 1s;"></view>
+
+      <view style="width: 85%; display: flex; align-items: center; justify-content: flex-start; z-index: 1; margin-left: 20rpx;" >
+        <view style="width:auto; margin-right: 10rpx;">{{item.optionContent}}</view>
+        <text wx:if="{{item.userVoteStatus}}" class="cuIcon-roundcheckfill" style="font-size: 32rpx;color: #586c90;"></text>
+      </view>
+      
+      <text style="z-index: 1; font-weight:bold">{{item.rate}}</text>
+    </view>
+
+    <view style="display: flex; font-size: 24rpx; margin:10rpx 0rpx;">
+      <view style="color: #67799f;">{{voteArticle.canMultiSelect?'多选':'单选'}} · </view>
+      <view>{{expireTime}}{{isEnd?'已结束':'结束'}} · </view>
+      <view>{{peopleNum}}人参与</view>
+    </view>
+
+    <view wx:if="{{userVoted&&!detail}}" style="margin:7rpx;font-weight: bold; background-color:#989898; border-radius: 10rpx; width: 100%; padding: 15rpx 0; display: flex; justify-content: center; color: white;" >已投票</view>
+
+    <view wx:elif="{{userVoted&&detail}}" style="width: 100%; display: flex;">
+
+      <button style="margin:7rpx;font-weight: bold; background-color: transparent; border: 1px solid #5c6a8f; border-radius: 10rpx; width: 35%; color: #5f698c; font-size: 28rpx;" open-type="share">
+        分享观点
+      </button>
+
+      <view style="margin:7rpx;font-weight: bold; background-color: #989898; border-radius: 10rpx; width: 65%; display: flex; justify-content: center; align-items: center; color: white;" >已投票</view>
+    </view>
+
+    <view wx:elif="{{isEnd}}" style="margin:7rpx;font-weight: bold; background-color:#989898; border-radius: 10rpx; width: 100%; padding: 15rpx 0; display: flex; justify-content: center; color: white;" >已结束</view>
+  </view>
+
+  <view wx:else style="display: flex; flex-direction: column; align-items: center;" catch:tap="aaa">
+    
+    <view wx:for="{{voteOptionList}}" wx:key="index" style="width: 100%; background-color: white; margin:10rpx 0 10rpx 0; padding: 0rpx 20rpx; font-size: 26rpx; display: flex; align-items: center; justify-content: flex-start; min-height: 60rpx;" data-idx="{{index}}" data-optionid="{{item.id}}" catch:tap="voteSelect">
+      <view style="width: 95%; display: flex; align-items: center; justify-content: flex-start;" >
+        <text style="margin-right: 10rpx;max-width: 85%;">{{item.optionContent}}</text>
+       
+        <text wx:if="{{item.userVoteStatus}}" class="cuIcon-roundcheckfill" style="font-size: 32rpx;color: #586c90;"></text>
+        
+      </view>
+      
+    </view>
+
+    <view style="display: flex; font-size: 24rpx; margin:10rpx 0rpx;">
+      <view style="color: #67799f;">{{voteArticle.canMultiSelect?'多选':'单选'}} · </view>
+      <view>{{expireTime}}{{isEnd?'已结束':'结束'}} · </view>
+      <view>{{peopleNum}}人参与</view>
+    </view>
+
+    <view hover-class="voteHover" style="margin:7rpx;font-weight: bold; background-color: #5c6a8f; border-radius: 10rpx; width: 100%; padding: 15rpx 0; display: flex; justify-content: center; color: white;" catch:tap="confirmVote">立即投票</view>
+
+  </view>
+</view>

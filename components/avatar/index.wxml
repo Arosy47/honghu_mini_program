@@ -1,0 +1,14 @@
+
+
+<view style="position: relative;">
+  <view class="{{isLink&&!gray ? 'avatar-container' : 'avatar-container-no-hover'}}" style="width: {{size}}rpx; height:{{size}}rpx; {{circle? 'border-radius: 50%':'border-radius: 10%; '}}; {{gray?'filter: grayscale(100%);':''}}" hover-class="mask-hover" hover-stay-time="700" hover-stop-propagation="true"  catchtap="{{isLink&&!gray ? 'onAvatarTap' : 'doNothing'}}" >
+    <image style="width: {{size}}rpx; height:{{size}}rpx;" class="image" mode="aspectFill" src="{{avatarUrl}}" data-user-id="{{userId}}"/>
+  </view>
+
+  <view wx:if="{{blueV&&!anonymous}}" class="blue-v-badge" style="position: absolute; z-index: 100; bottom: 0; right: 0; width: {{size * 0.35}}rpx; height: {{size * 0.35}}rpx;">
+    <view class="blue-v-icon">V</view>
+  </view>
+  <image wx:elif="{{admin&&!anonymous}}" src="/images/viplogo.png" mode="aspectFill" style="position: absolute; z-index: 99; bottom: 0; right: 0; width: 25rpx; height: 25rpx;"/>
+   
+</view>
+

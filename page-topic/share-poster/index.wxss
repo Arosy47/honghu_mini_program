@@ -1,0 +1,28 @@
+
+
+page{
+  background-color: black !important;
+}
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top {
+  
+}
+
+.intro {
+  width: 686rpx;
+  height: 88rpx;
+  background: #eb7a76;
+  
+  border-radius: 16rpx;
+  font-size: 32rpx;
+
+}

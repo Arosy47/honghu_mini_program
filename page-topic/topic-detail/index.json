@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "emoji-picker-png": "../../components/emoji-picker-png/emoji-picker",
+    "comment-item": "../../components/comment-item/index"
+  },
+
+  "navigationStyle": "custom",
+  "singlePage": {
+    "navigationBarFit": "squeezed"
+  }
+}

@@ -1,0 +1,79 @@
+
+
+Page {
+  background-color: #fff;
+}
+
+.margin-top-self {
+  margin-top: 90rpx;
+}
+
+.l1 {
+  width: 100%;
+  border-bottom: 1rpx solid #000;
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+
+}
+
+.time {
+  color: #b2b2b2;
+  font-size: 24rpx;
+}
+
+.card-content{
+  position: relative;
+  background-color: #fff6ec;
+  padding: 35rpx;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 170rpx;
+  width: 170rpx;
+  border-radius: 30rpx;
+}
+
+.content-text{
+  width: 80%;
+  font-size: 25rpx;
+  line-height: 1.6;
+  word-wrap: break-word;
+
+  position: absolute;
+}
+
+.content-text-three-line {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-text-two-line {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-text-one-line {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}

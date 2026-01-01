@@ -1,0 +1,498 @@
+.topic-item {
+  
+  display: flex;
+  flex-direction: row;
+  padding:10rpx 0rpx 10rpx 20rpx;
+  background: #fff;
+  
+}
+
+.topic-item-detail {
+  
+  display: flex;
+  flex-direction: column;
+  padding:20rpx 0rpx 10rpx 30rpx;
+  background: #fff;
+  
+}
+
+.left {
+  width: 102rpx; 
+  height: 80rpx; 
+  box-sizing: border-box;
+  margin-top: 15rpx;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  margin-left: 15rpx;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 65rpx;
+}
+
+.info-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.admin-tag {
+  height: 38rpx !important;
+  margin-left: 15rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx !important;
+  color: #ffb400 !important;
+  border: 1px #ffb400 solid;
+  background: #fefad3 !important;
+}
+
+.time {
+  color: #b2b2b2;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+
+.topic-content {
+  padding: 0rpx 40rpx 0rpx 0rpx;
+  margin-bottom: 10rpx;
+}
+
+.topic-content-detail {
+  padding: 20rpx 25rpx 20rpx 5rpx;
+}
+
+.contentInner {
+  
+  width: 582rpx;
+  color: #2f3033;
+  font-size: 28rpx;
+  
+  text-align: justify;
+}
+
+.content-text {
+
+}
+
+.content-text-expand {
+  
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hideArea {
+  display: -webkit-box;
+  overflow: hidden;
+  position: fixed;
+  top: 100vh;
+  left:-100vw;
+}
+
+.text-expand {
+  color: #db8787;
+
+  font-weight: 500;
+  display: inline;
+}
+
+.media {
+  margin-bottom: 10rpx;
+}
+
+.posters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 10rpx;
+}
+
+.posters .image {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 10rpx;
+  
+  border-radius: 10rpx;
+
+  background-color: rgb(240, 240, 240);
+
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: 50% 50%;
+}
+
+.posters .column-one {
+
+}
+
+.posters .column-two {
+  width: 270rpx;
+  height: 270rpx;
+}
+
+.video {
+  margin-bottom: 10rpx;
+  border-radius: 10rpx;
+}
+
+.tags-list {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+}
+
+.tag {
+  margin-right: 10rpx;
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.l1 {
+  width: 100%;
+  border-bottom: 1rpx solid rgb(0, 0, 0);
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+
+}
+
+.top-tag{
+  height: 38rpx !important;
+  margin-left: 15rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx !important;
+  color: #0e1d1a !important;
+  border: 1px #81ada6 solid;
+  background: #81ada6 !important;
+
+}
+
+.zhidingTag{
+  border-radius: 0 0 10rpx 10rpx;
+  
+  padding: 0 15rpx 0 15rpx;
+  height: 55rpx;
+  background-color: rgb(224, 105, 105);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.overlay{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(233, 231, 231);
+  
+  color:gray;
+  z-index: 100;
+
+  min-height: 150rpx;
+}
+
+.rich-text-content{
+
+}
+.rich-text-content:active{
+  background-color: rgb(233, 233, 233);
+}
+
+.content1111{
+
+}
+
+.more-text-collapse {
+  
+  line-height: 42rpx; 
+}
+
+.category-tag{
+  position: relative; 
+  
+  width: 120rpx;
+  height: 44rpx;
+  
+  background-color: #fff2ee;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff926b;
+  
+}
+
+.lottery-box {
+  position: relative;
+  margin: 20rpx 20rpx 10rpx 0;
+  padding: 30rpx;
+  background: linear-gradient(180deg, #fff1f1 0%, #ffffff 100%);
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.school-name {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.lottery-status {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+}
+
+.status-ongoing {
+  background: #e8f3ff;
+  color: #4b7fe8;
+}
+
+.status-ended {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.info-section {
+  margin-bottom: 30rpx;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 20rpx;
+  line-height: 1.6;
+  align-items: flex-start;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+  width: 120rpx;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.info-label::after {
+  content: ':';
+  position: absolute;
+  right: 8rpx;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #333;
+  flex: 1;
+  padding-left: 16rpx;
+}
+
+.prize-list {
+  flex: 1;
+}
+
+.prize-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+  line-height: 1.6;
+}
+
+.prize-name {
+  font-size: 26rpx;
+  color: #333;
+  flex: 1;
+  padding-right: 30rpx;
+}
+
+.prize-count {
+  font-size: 26rpx;
+  color: #333;
+  width: 60rpx;
+  text-align: right;
+}
+
+.join-btn {
+  margin: 30rpx 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  font-weight: bold;
+}
+
+.btn-not-joined {
+  background: #4b7fe8;
+  color: #fff;
+}
+
+.btn-joined {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.btn-ended {
+  background: #fff;
+  color: #4b7fe8;
+  border: 2rpx solid #4b7fe8;
+}
+
+.lottery-desc {
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1px solid #eee;
+}
+
+.desc-title {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.desc-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.desc-item {
+  margin-bottom: 12rpx;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.desc-item::before {
+  content: '';
+  position: absolute;
+  left: 6rpx;
+  top: 12rpx;
+  width: 4rpx;
+  height: 4rpx;
+  background: #999;
+  border-radius: 50%;
+}
+
+.user-link {
+  color: #4b7fe8;
+  display: inline;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  background: #f5f7fa;
+  color: #666;
+  font-size: 22rpx;
+  border-radius: 4rpx;
+  margin-top: 16rpx;
+}
+
+.second-hand-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 40rpx 10rpx 0;
+  margin-bottom: 10rpx;
+}
+
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  background: #fff5f5;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.price-symbol {
+  font-size: 26rpx;
+  color: #ff5252;
+  margin-right: 4rpx;
+}
+
+.price-value {
+  font-size: 38rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff5252, #ff7676);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.publish-type {
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  margin-left: 16rpx;
+}
+
+.type-sell {
+  background: #ffe8e8;
+  color: #ff5252;
+}
+
+.type-buy {
+  background: #e8f3ff;
+  color: #4b7fe8;
+}
+
+.trade-status {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.status-selling {
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+  color: #ffffff;
+}
+
+.status-selling::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+.status-sold {
+  background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+  color: #ffffff;
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
+  }
+}

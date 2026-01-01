@@ -1,0 +1,250 @@
+
+
+.container {
+
+  width: 100%;
+  overflow-x: hidden;
+
+  padding-top: 0rpx;
+
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  
+}
+
+.total {
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 40rpx;
+  
+}
+
+.end {
+  margin-top: 47rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+
+.end_txt {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.edit-item{
+
+  width: 100%;
+}
+
+.edit-item-up{
+  padding-bottom: 15rpx;
+  
+}
+
+.foot{
+  position: fixed;
+	width: 100%;
+	bottom: 0;
+	z-index: 1024;
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.input-textarea {
+  width: 450rpx !important;
+  font-size: 28rpx;
+}
+
+.nothing-class{
+  position: relative !important;
+  transform: translate(-50%, 0%) !important;
+
+  margin-top: 0rpx;
+  margin-bottom: 100rpx;
+}
+
+.l1 {
+  width: 100%;
+  border-bottom: 1rpx solid #000;
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+}
+
+.custom-mask{
+  background-color: gray;
+  opacity: 0.1;
+  position: fixed;
+  
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  height: 50px;
+  font-size: 14px;
+  color: #999;
+  padding-bottom: 20rpx;
+  z-index: -1;
+}
+
+.text {
+  margin-right: 10px;
+}
+
+.group-notice{
+  width: 90%;
+  background-color: #f8e9d9;
+  color: #ff8200;
+  padding: 13rpx 20rpx;
+  border-radius: 20rpx;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.float-container {
+  background-color: #ffffff;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  
+}
+
+.swiper-container {
+  margin-left: 10rpx;
+  height: 120rpx;
+  width: 580rpx;
+  overflow: hidden;
+}
+
+.topten-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #ededed;
+}
+
+.card {
+  width: 130rpx;
+  height: 120rpx;
+  background-color: #fcb6b6;
+  position: relative;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:url(https://cdn.honghu.com/sysImg/hot-sale.png) ;
+
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: 0% 0%;
+
+  opacity: 0.2; 
+  z-index: 1; 
+}
+.card::after {
+  content: '吃瓜热榜';
+  font-size: 22rpx;
+  color: rgb(51, 51, 51);
+  font-weight: bolder;
+  position: absolute;
+  top: 20%;
+  left: 20rpx;
+  right: 0;
+  bottom: 0;
+  z-index: 1; 
+}
+
+.triangle {
+  position: absolute;
+  top: 50%;
+  right: -15rpx; 
+  transform: translate(-90%,-50%);
+  
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15rpx 15rpx 15rpx 0;
+  border-color: transparent #ededed transparent transparent; 
+}
+
+.bottom-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.action-btn {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15rpx;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  transition: all 0.3s;
+}
+
+.action-btn text {
+  margin: 0 6rpx;
+}
+
+.comment-btn {
+  background: #f8f8f8;
+  color: #666666;
+}
+
+.comment-btn:active {
+  background: #f0f0f0;
+}
+
+.chat-btn {
+  background: #eb7a76;
+  color: #ffffff;
+}
+
+.chat-btn:active {
+  background: #e56c67;
+}
+
+.chat-btn-gray {
+  background: #b1b1b1;
+  color: #ffffff;
+}
+
+.cuIcon-comment, .cuIcon-messagefill {
+  font-size: 36rpx;
+}
+
+.num-font{
+  font-weight: bolder;
+}

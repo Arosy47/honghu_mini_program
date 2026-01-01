@@ -1,0 +1,67 @@
+
+
+<view class="message-item {{!hasBorder ? 'no-border' : ''}}" hover-class='highSelectColor'>
+  <view class="header">
+    
+    <view class="header-text">
+      <view wx:if="{{notification.noticeType === 41||notification.noticeType === 42||notification.noticeType === 43||notification.noticeType === 44||notification.noticeType === 45}}">
+        <text class="message-tip">违规通知</text>
+        <text class="cuIcon-warnfill text-red"></text>
+        <text class="time">{{notification.createTime}}</text>
+      </view>
+
+      <view wx:elif="{{notification.noticeType === 46||notification.noticeType === 47}}">
+        <text class="message-tip">审核结果通知</text>
+        <text class="time">{{notification.createTime}}</text>
+      </view>
+
+      <view wx:elif="{{notification.noticeType === 48}}">
+        <text class="message-tip">举报结果通知</text>
+        <text class="time">{{notification.createTime}}</text>
+      </view>
+      
+      <view class="message-content">
+
+        <text>{{notification.content}}</text>
+      </view>
+
+    </view>
+  </view>
+
+  <view wx:if="{{notification.articleModel}}" >
+    <view class="topic" style="display: flex; justify-content: space-between;">
+      <view class="topic-right">
+        <text class="topic-content">{{notification.articleModel.content}}</text>
+      </view>
+
+    </view>
+  </view>
+
+  <view wx:elif="{{notification.organizationModel}}">
+    <view class="topic" style="display: flex; justify-content: space-between;" wx:if="{{!notification.organizationModel.hasDelete}}">
+      <view class="topic-right">
+        
+        <text class="topic-content">{{notification.organizationModel.content}}</text>
+      </view>
+      
+    </view>
+    <view wx:else>
+      <view>已删除</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{notification.articleCommentModel}}" class="topic" >
+    <view class="topic-right">
+      
+      <text class="topic-content">{{notification.articleCommentModel.content}}</text>
+    </view>
+  </view>
+
+  <view wx:elif="{{notification.organizationCommentModel}}" class="topic" >
+    <view class="topic-right">
+      
+      <text class="topic-content">{{notification.organizationCommentModel.content}}</text>
+    </view>
+  </view>
+
+</view>

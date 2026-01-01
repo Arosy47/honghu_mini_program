@@ -1,0 +1,231 @@
+
+
+<page-meta page-style="overflow: {{pickerVisiable ? 'hidden' : 'visible'}}" />
+
+<cu-custom style="position: fixed; z-index: 1000;" wx:if="{{!isSinglePage}}" bgColor="theme-color" customBack="{{true}}" bind:back="back"> 
+  <text slot="backText" class="{{shareUserId?'cuIcon-homefill':'cuIcon-back'}}"></text>
+  <view slot="content">红狐生态圈</view>
+</cu-custom>
+
+<view wx:if="{{!isSinglePage}}" class="refresh theme-color-white" style="height: {{stickTop}}px;">
+   <text>{{refreshText}}</text>
+</view>
+
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-gray" style="color: #666;"></view>
+</view>
+
+<view wx:if="{{isSinglePage}}">
+
+  <topic-item wx:if="{{!loading}}" topic-item-class="topic-item" hover topic="{{topic}}" isOwner="{{userId === topic.userId}}" admin="{{topic.admin}}" isLink="{{false}}" autoplay showTags showDetail detail bind:tagTap="gotoCategory" bind:moreIconTap="showActions" bind:commentIconTap="onCommentIconTap" bind:thumbUpIconTap="onThumbUpTap" 
+  bind:collectIconTap="onCollectTap" bind:viewIconTap="gotoTopicDetail"
+  bind:dingIconTap="onDingTap" bind:vote="vote"/>
+
+  <view class="container" wx:if="{{!loading && !(topic==null||topic.hasDelete)}}">
+
+    <view style="width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-top: 18rpx;margin-bottom: 18rpx;">
+      <view class="total">共{{topic.commentCount}}条评论</view>    
+      <view hover-class="highSelectColor" style="position: absolute; right: 20rpx; display: flex; justify-content: flex-end; align-items: center;font-size: 25rpx;color: #999999;" bind:tap="sortOpen">
+        <text class="cuIcon-sort" style="font-size: 40rpx; margin-right: 10rpx;"></text>
+        <text> {{order=='hot'?'热度':'时间'}}</text>
+      </view>
+    </view>
+
+    <view class="l1"></view>
+
+    <view wx:if="{{initCommentLoading}}">
+      <view class="cu-load loading text-gray" style="color: #666;"></view>
+    </view>
+
+    <comment-item wx:for="{{comment_list}}" wx:for-item="item" wx:key="id" comment="{{item}}" id="comment_{{index}}" isOwner="{{userId === item.userId}}" admin="{{item.admin}}" topic="{{topic}}" bind:commentTap="replyComment" bind:commentLongTap="onCommentItemTap" bind:deleteTap="deleteComment" bind:queryReply="onExpandReply" bind:thumbUpComment="onThumbUpTapComment" />
+
+    <l-loadmore l-class="loading" show="{{!initCommentLoading&&commentLoading}}" type="loading" loading-text="正在加载中..." line />
+    <l-loadmore l-class="loading" show="{{!nodata&&!initCommentLoading&&!hasMore && !commentLoading}}" type="end" end-text="已经到底了" line />
+
+    <nothing nothing-class="nothing-class" wx:if="{{nodata}}" tip="快来评论吧" />
+
+    <view style="height: 300rpx;"></view>
+  </view>  
+</view>
+
+<view wx:else bind:tap="blurblur" style="min-height: {{windowHeight}}px;">  
+    
+  <view wx:if="{{maskShow}}" class="custom-mask" bind:touchend="touchend">
+  </view>
+
+  <topic-item wx:if="{{!loading}}" topic-item-class="topic-item" hover topic="{{topic}}" isOwner="{{userId === topic.userId}}" admin="{{topic.admin}}" isLink="{{false}}" autoplay showTags showDetail detail bind:tagTap="gotoCategory" bind:moreIconTap="showActions" bind:commentIconTap="onCommentIconTap" bind:thumbUpIconTap="onThumbUpTap" 
+  bind:collectIconTap="onCollectTap" bind:viewIconTap="gotoTopicDetail"
+  bind:dingIconTap="onDingTap" bind:vote="vote"/>
+
+  <view style="height: 12rpx; background-color:#eff2f6;"></view>
+  
+  <view id="top-trigger" class="float-container"  bindtap="gotoTopTen" >
+    <view class="topten-class">
+      <view class="card">
+        <view class="triangle"></view>
+        <view class="cuIcon-roundrightfill" style="font-size: 35rpx;position: absolute; bottom: 12%; left: 50%;color: white;transform: translateX(-50%);"></view>
+      </view>
+    </view>
+    <view style="border-top-right-radius: 15rpx;border-bottom-right-radius: 15rpx;background-color: #ededed; background:linear-gradient(180deg, #f8cccc, #f7ebeb)">
+      <swiper class="swiper-container" vertical="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2500}}" duration="{{1500}}" circular="true"	easing-function="linear" current="{{toptenCurrent}}">
+        <swiper-item wx:for="{{yasuoTopTen}}" wx:key="id">
+          <view style="width: 560rpx; display: flex; justify-content: flex-start; align-items: flex-start;">
+            <view style="padding-top: 13rpx;">
+              <text wx:if="{{index===0}}" class="num-font" style="color: rgb(165, 21, 21);" >0{{index+1}}. </text>
+              <text wx:elif="{{index===1}}" class="num-font" style="color: rgb(255, 115, 0);">0{{index+1}}. </text>
+              <text wx:elif="{{index===2}}" class="num-font" style="color: rgb(233, 186, 186)">0{{index+1}}. </text>
+              <text wx:elif="{{index>2 && index < 9}}" class="num-font" style="color: rgb(134, 134, 134)">0{{index+1}}. </text>
+              <text wx:else class="num-font" style="color: rgb(134, 134, 134);">{{index+1}}. </text>
+            </view>
+
+            <view class="content-text-two-line" style="padding-left: 10rpx; padding-right: 10rpx; padding-top: 12rpx;">
+              
+              <rich-text style="font-size: 28rpx; color: #242424;font-weight: bold;" nodes="{{item.content}}" ></rich-text>
+            </view>
+            <view style="position: absolute; right: 35rpx; bottom: 17rpx; font-size: 20rpx; color: gray;">{{item.viewCount}}人围观</view>
+          </view>
+
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  
+  <view wx:if="{{showInfoConfig&&showInfoConfig.showGroupQrCode}}" style="display: flex;justify-content: center; align-items: center;" bind:tap="showGroupQrCode">
+    <view class="group-notice" >
+      <view class="cuIcon-group_fill" style="font-size: 35rpx; margin-right: 10rpx;"></view>
+      <view>点击加入校友群，校内咨询第一时间知晓!</view>
+    </view>
+  </view>
+
+  <view class="container" wx:if="{{!loading && !(topic==null||topic.hasDelete)}}">
+
+    <view style="width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-top: 18rpx;margin-bottom: 18rpx;">
+      <view class="total">共{{topic.commentCount}}条评论</view>    
+      <view hover-class="highSelectColor" style="position: absolute; right: 20rpx; display: flex; justify-content: flex-end; align-items: center;font-size: 25rpx;color: #999999;" bind:tap="sortOpen">
+        <text class="cuIcon-sort" style="font-size: 40rpx; margin-right: 10rpx;"></text>
+        <text> {{order=='hot'?'热度':'时间'}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{initCommentLoading}}">
+      <view class="cu-load loading text-gray" style="color: #666;"></view>
+    </view>
+
+    <comment-item wx:for="{{comment_list}}" wx:for-item="item" wx:key="id" comment="{{item}}" index="{{index}}" id="comment_{{index}}" isOwner="{{userId === item.userId}}" admin="{{item.admin}}"  topic="{{topic}}" bind:commentTap="replyComment" bind:commentLongTap="onCommentItemTap" bind:deleteTap="deleteComment" bind:queryReply="onExpandReply" bind:thumbUpComment="onThumbUpTapComment" />
+
+    <l-loadmore l-class="loading" show="{{!initCommentLoading&&commentLoading}}" type="loading" loading-text="正在加载中..." line />
+
+    <nothing nothing-class="nothing-class" wx:if="{{nodata}}" tip="快来评论吧" style="margin-bottom: 10rpx;"/>
+
+    <view style="height: 300rpx;"></view>
+  </view>  
+
+</view>
+
+<van-action-sheet
+  z-index="1025"
+  show="{{ articleActionsShow }}"
+  actions="{{ articleActions }}"
+  bind:close="articleActionClose"
+  bind:select="articleActionSelect"
+/>
+
+<van-action-sheet
+  z-index="1025"
+  show="{{ commentActionsShow }}"
+  actions="{{ onCommentActions }}"
+  bind:close="actionClose"
+  bind:select="actionSelect"
+/>
+
+<van-action-sheet
+  z-index="1026"
+  show="{{ reportReasonShow }}"
+  actions="{{ reportReasonList }}"
+  bind:close="reportReasonListClose"
+  bind:select="reportReasonSelect"
+/>
+
+<van-action-sheet
+  z-index="1026"
+  show="{{ sortShow }}"
+  actions="{{ sortList }}"
+  bind:close="sortClose"
+  bind:select="sortSelect"
+/>
+
+<view hidden="{{topic.functionType==='SECOND_HAND_MARKET' && InputBottom<=0 && !focus}}" class="{{InputBottom>0?'foot edit-item edit-item-up':'foot edit-item bottom-adapt'}}" style="bottom:{{InputBottom}}px; background-color: #f7f7f7;padding-top: 15rpx;">
+
+  <view wx:if="{{imageFile}}" style="margin-left: 30rpx;position: relative;">
+    <view style="padding: 10rpx;position: relative;width: 100rpx;height: 100rpx;">
+      <image src="{{imageFile}}" mode="aspectFill" style="width: 80rpx;height: 80rpx;position: absolute;" data-src="{{imageFile}}" catch:tap="previewSelectedCommentImage"/>
+
+      <image src="/images/tabbar/close.png" mode="aspectFill" style="position: absolute; right: 0; top: 0; color: rgb(224, 51, 51); width: 24rpx; height: 24rpx; background-color: white; border-radius: 50%;" catch:tap="removeSelectedImg"/>
+
+    </view>
+  </view>
+  <view style="display: flex; flex-direction: row;justify-content: space-around; align-items: center;">
+    <view style="font-size: 48rpx; color: #8799a3; padding-left: 20rpx;padding-right: 20rpx;" catch:tap="selectImage">
+      <text class="{{'cuIcon-camera'}} text-grey"></text>
+    </view>
+
+    <view bind:tap="clickInput">
+      <van-field 
+        input-class="input-textarea"
+        value="{{comment_text}}"
+        type="textarea"
+        placeholder="{{placeholder}}"
+        autosize="{{inputAutoSiza}}"
+        border="{{true}}"
+        adjust-position="{{false}}"
+        custom-style="padding-top:13rpx;padding-bottom:13rpx;padding-left:8rpx;padding-right:8rpx;border-radius:10rpx" 
+        show-confirm-bar="{{false}}"
+        focus="{{focus}}"
+        maxlength="300"
+        bind:focus="InputFocus" 
+        bind:blur="InputBlur" 
+        bind:input="setComment"
+        extra-event-params
+        hold-keyboard
+        disabled="{{!topic||topic.hasDelete==true}}"
+        bind:keyboardheightchange="keyboardheightchange"
+      > 
+        <view slot="right-icon">
+          <view style="font-size: 48rpx; color: #8799a3; padding-right: 7rpx;padding-left: 7rpx;" catch:tap="{{pickerVisiable?'showKeyBoard':'showEmoji'}}">
+            <text class="{{pickerVisiable?'cuIcon-keyboard':'cuIcon-emoji'}} text-grey"></text>
+          </view>
+        </view>
+      </van-field> 
+    </view>
+
+    <view style="padding-left: 20rpx;padding-right: 20rpx; color:{{comment_text||imageFile?'#eb7a76':'gray'}} ; font-weight: bold;" catch:tap="onCommentBtnTap">发送</view>
+
+  </view>
+</view>
+
+<view wx:if="{{InputBottom>0}}" style="position:fixed;background-color: rgb(255, 255, 255); height: {{InputBottom}}px; position:fixed;left:0;right:0;bottom: 0; z-index: 1;"></view>
+
+<view wx:elif="{{topic.functionType==='SECOND_HAND_MARKET'}}" class="bottom-action-bar bottom-adapt" style="padding-bottom:50rpx;">
+  <view class="action-btn comment-btn" bindtap="onCommentIconTap">
+    <text class="cuIcon-comment"></text>
+    <text>写评论</text>
+  </view>
+  
+  <view wx:if="{{userId != topic.userId}}" class="action-btn chat-btn" bindtap="gotoChat">
+    <text class="cuIcon-messagefill"></text>
+    <text wx:if="{{topic.secondHand.type==='SELL'}}">我想要</text>
+    <text wx:elif="{{topic.secondHand.type==='BUY'}}">聊一聊</text>
+  </view>
+  <view wx:else class="action-btn {{topic.secondHand.status==='PROCESSING'?'chat-btn':'chat-btn-gray'}}" bindtap="{{topic.secondHand.status==='PROCESSING'?'doEnd':''}}">
+    <text wx:if="{{topic.secondHand.type==='SELL'}}">已出售</text>
+    <text wx:elif="{{topic.secondHand.type==='BUY'}}">已购买</text>
+  </view>
+</view>
+
+<emoji-picker-png wx:if="{{pickerVisiable}}" topicedit="{{false}}" emojiheight="{{initKeyboardHeight-safeAreaBottom}}" bind:onSelect="onSelect" bind:closeDialog="closeDialog"
+></emoji-picker-png>
+
+<van-toast id="van-toast" />
+
+<privacy/>
+

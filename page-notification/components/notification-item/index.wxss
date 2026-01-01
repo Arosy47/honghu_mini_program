@@ -1,0 +1,105 @@
+
+
+.notification-item {
+  background: #fff;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px #f1f1f1 solid;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20rpx;
+}
+
+.time {
+  color: rgb(165, 165, 165);
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+
+.message {
+  margin: 10rpx 0;
+}
+
+.message-tip {
+  font-weight: normal ;
+  font-size: 26rpx;
+}
+
+.n-content {
+  font-weight: normal ;
+}
+
+.message-content {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topic {
+  display: flex;
+  flex-direction: row;
+  background: #f7f7f7;
+  border-radius: 10rpx;
+
+}
+
+.img {
+  width: 150rpx !important;
+  height: 150rpx !important;
+  border-radius: 10rpx;
+  margin-left: 50rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+
+  background-color: rgb(240, 240, 240);
+  
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: 50% 50%;
+}
+
+.topic-left {
+  padding: 20rpx;
+}
+
+.topic-content {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: gray;
+  font-size: 24rpx;
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tag{
+
+  background-color: #f5f5f5;
+  color: #818181;
+
+  border-radius: 5000rpx;
+
+	box-sizing: border-box;
+  padding: 5rpx 10rpx;
+  
+  font-size: 15rpx;
+  
+}

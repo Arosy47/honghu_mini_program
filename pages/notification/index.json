@@ -1,0 +1,8 @@
+{
+  "backgroundColor": "#ededed",
+  "navigationBarTitleText": "消息",
+  "usingComponents": {
+    "session-item": "../../components/session-item/index",
+    "system-notice": "../../components/system-notice/index"
+  }
+}

@@ -1,0 +1,143 @@
+
+
+.container-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 30rpx;
+  
+  width: 750rpx;  
+  padding-top: 20rpx;
+}
+
+.reply-region {
+
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  justify-content: flex-start;
+  padding-left: 110rpx;
+  width: 750rpx;
+  
+}
+
+.item_right {
+  display: inline-block;
+  width: 537rpx;
+  
+  margin-left: 20rpx;
+  
+}
+
+.right_name {
+  display: inline;
+  
+  color: #adadad;
+  margin-right: 10rpx;
+}
+
+.right_content {
+
+}
+
+.fu_comment {
+  
+  border-radius: 30rpx;
+}
+
+.content {
+  margin: 5rpx 0rpx 0rpx 0rpx;
+}
+
+.right_content_txt {
+  font-size: 30rpx;
+  color: #333333;
+
+  line-height: 45rpx;
+}
+
+.right_content_txt2 {
+  font-size: 20rpx;
+  color: #8c8c8c;
+  margin-left: 20rpx;
+ 
+}
+
+.right_content_delete{
+  border-radius: 10rpx;
+  font-size: 25rpx;
+  color: rgb(202, 199, 199);
+}
+
+.reply_right {
+  
+  width: 480rpx;
+  margin-left: 12rpx;
+
+}
+
+.content-text-expand {
+  font-size: 23rpx;
+  font-weight: bold;
+  color: #db8787;
+
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.item-icon {
+  
+  width: 27rpx;
+  height: 27rpx;
+
+}
+
+.item-text {
+  color: #777;
+  font-size: 20rpx;
+  height: 30rpx;
+}
+
+.tag{
+
+  background-color: #ffecf2;
+  color: #ef2853;
+
+  border-radius: 5000rpx;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+  padding: 5rpx 10rpx;
+  
+  font-size: 15rpx;
+  
+}
+
+.l1 {
+  width: 650rpx;
+  border-bottom: 1rpx solid #000;
+  -webkit-transform: scaleY(0.1);
+  transform: scaleY(0.1);
+  margin-left: 100rpx;
+}
+
+.nickname-class{
+  font-weight: normal !important;
+  
+  color: #adadad !important;
+}
+.comment-image{
+  border-radius: 8rpx;
+}

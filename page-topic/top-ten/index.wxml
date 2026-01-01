@@ -1,0 +1,81 @@
+
+
+<cu-custom bgColor="theme-color" customBack="{{true}}" bind:back="back"> 
+  <text slot="backText" class="{{shareUserId?'cuIcon-homefill':'cuIcon-back'}}"></text>
+  <view slot="content"><text class="cuIcon-hotfill text-red"></text>十大热帖</view>
+</cu-custom>
+
+<view class="top-banner">
+  <view class="banner-content">
+    <view class="banner-text">
+      <view class="banner-title">今日校园热榜</view>
+      <view class="banner-subtitle">Top 10 Trending Topics</view>
+      <view class="banner-desc">实时更新最热校园话题</view>
+    </view>
+    <view class="banner-image-container">
+      <view class="hot-topic-icon">🔥</view>
+      <view class="decoration-circles">
+        <view class="circle circle-1"></view>
+        <view class="circle circle-2"></view>
+        <view class="circle circle-3"></view>
+        
+      </view>
+    </view>
+  </view>
+  <view class="wave-decoration"></view>
+</view>
+
+<view class="container bottom-adapt">
+  <view class="article-item" hover-class="highSelectColor" wx:for="{{topTen}}" wx:key="id" topic="{{item}}" bind:tap="gotoTopicDetail" data-index="{{index}}">
+    <view style="display: flex; justify-content: flex-start; align-items: center;">
+
+      <view class="rank-badge {{index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-other'}}">
+        {{index + 1}}
+      </view>
+
+      <view style="color: gray;">
+        <text style="font-size: 22rpx; font-weight:normal;margin-left: 20rpx;">{{item.viewCount}} 浏览</text>
+        <text style="font-size: 22rpx; font-weight:400; margin-left: 20rpx;">{{item.commentCount}} 评论</text>
+        <text style="font-size: 22rpx; font-weight:400; margin-left: 20rpx;">{{item.thumbUpCount}} 赞</text>
+      </view>
+
+    </view>
+
+    <view style="margin-top: 5rpx; height: 130rpx;">
+      <view wx:if="{{item.imgUrlList&&item.imgUrlList.length>0}}" style="display: flex; justify-content: space-between;">
+
+        <rich-text class="content" style="font-size:30rpx; line-height: 48rpx;display:unset;" nodes="{{item.content}}" ></rich-text>
+
+        <view>
+          <image style="height: 120rpx; width: 120rpx; border-radius: 10%;" src="{{'https://'+item.imgUrlList[0].url}}" mode="aspectFill"/>
+        </view>
+      </view>
+      <view wx:elif="{{item.imgUrlList==null||item.imgUrlList.length==0}}" style="width: 100%;">
+
+        <rich-text class="content" style="font-size:30rpx; line-height: 48rpx;display:unset;" nodes="{{item.content}}" ></rich-text>
+      </view>
+    </view>
+
+    <view class="bottom-item">
+      <view class="tags-list" >
+        <l-tag l-class="tag" size="mini" shape="circle" bg-color="#fff2ee" font-color="#ff926b" >#{{item.categoryName}}</l-tag>
+      </view>
+
+      <view style="width: 400rpx; display: flex; justify-content: flex-end; align-items: center; color: gray;">
+        
+        <image mode="aspectFill" class="avatar-wrapper avatar" src="{{item.avatar ? ('https://' + item.avatar) : ''}}" />
+        
+        <view style="display: flex; justify-content: flex-end; align-items: center;">
+          <text style="margin-left: 10rpx; font-size: 25rpx;white-space: nowrap; overflow: hidden; max-width: 200rpx;">{{item.anonymous? item.anonymousName:item.userNickName}}</text>
+          <text style="font-size: 40rpx; margin-left: 5rpx;margin-right: 5rpx;">·</text>
+          <text style="font-size: 25rpx;">{{item.createTime}}</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class="l1"></view>
+
+  </view>
+
+</view>
+

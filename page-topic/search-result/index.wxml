@@ -1,0 +1,80 @@
+
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content"> </view>
+</cu-custom>
+
+<van-search
+  model:value="{{ keyword }}"
+  shape="round"
+  background="#ffffff"
+  placeholder="请输入搜索关键词"
+  bind:search="onSearch"
+/>
+
+<view class="l1"></view>
+
+<view class="tab-container" style="position: sticky; top:{{navHeight}}px; z-index: 10;">
+  
+  <view class="search-type-container">
+    <view class="search-type-item {{searchType=='post'?'active':''}}" data-type="post" bind:tap="switchSearchType">帖子</view>
+    <view class="search-type-item {{searchType=='user'?'active':''}}" data-type="user" bind:tap="switchSearchType">用户</view>
+  </view>
+
+  <view class="sort-container {{searchType=='post'?'':'hidden'}}">
+    <view class="tab-item {{currentTab==''?'active':''}}" data-index="" bind:tap="switchTab">相关度</view>
+    <view class="tab-item {{currentTab=='time'?'active':''}}" data-index="time" bind:tap="switchTab">时间</view>
+    <view class="tab-item {{currentTab=='hot'?'active':''}}" data-index="hot" bind:tap="switchTab">热度</view>
+  </view>
+
+  <view class="tab-item" style="position: absolute; right: 10rpx; display: flex; justify-content: flex-end; align-items: center;" bind:tap="showCategoryList">
+    <text class="cuIcon-triangledownfill" style="font-size: 40rpx;"></text>
+    <text> {{categoryName}}</text>
+  </view>
+</view>
+<view class="l1"></view>
+
+<van-popup show="{{showPopup}}" bind:close="closePopup" position="bottom" custom-style="height: 35%">
+
+  <view class="tag-items">
+    <l-tag l-class="tag" style="margin-right:15rpx; margin-bottom:10rpx;" l-image-class="tag-image" image="{{'https://'+ item.bgPicture+'!article_small'}}" width="50" height="70" wx:for="{{categoryList}}" wx:key="index" shape="circle" bg-color="{{item.active ? '#e54d42' : '#e6e6e6'}}" font-color="{{item.active ? '#FFFFFF' : '#000000'}}" data-category-code="{{item.categoryCode}}" bind:lintap="onTagTap">{{item.categoryName}} </l-tag>    
+
+    <l-tag l-class="tag" style="margin-right:15rpx;" width="50" height="70" shape="circle" bg-color="{{categoryCode=='' ? '#e54d42' : '#e6e6e6'}}" font-color="{{categoryCode=='' ? '#FFFFFF' : '#000000'}}" data-category-code="ALL" bind:lintap="onTagTap">所有板块 </l-tag>    
+  </view>
+  
+</van-popup>
+
+<view wx:if="{{searchType=='post'}}" wx:for="{{topics}}" id="{{'selection-'+groupIndex}}" wx:for-item="list"  wx:for-index="groupIndex"  wx:key="groupIndex">
+  <view wx:if="{{styleMap[groupIndex].visible}}" class="">
+    <view wx:for="{{list}}" wx:for-item="item" id="item-{{item.id}}" wx:key="{{item.id}}" class="result-item" hover-class="highSelectColor" >
+      <search-result-item topic="{{item}}" data-group-index="{{groupIndex}}" data-index="{{index}}" bind:gotoTopicDetail="gotoTopicDetail" />
+    </view>
+  </view>
+  <view wx:else style="height:{{styleMap[groupIndex].height}}px" class="selection--show">
+    
+  </view>
+</view>
+
+<view wx:if="{{searchType=='user'}}" class="user-result-container" wx:for="{{userList}}" id="{{'selection-'+groupIndex}}" wx:for-item="list"  wx:for-index="groupIndex"  wx:key="groupIndex">
+  <view wx:for="{{list}}" wx:key="userId" class="user-result-item" hover-class="highSelectColor" bind:tap="gotoUserProfile" data-user-id="{{item.userId}}">
+    <view class="user-avatar-container">
+
+      <avatar class="avatar" circle="{{true}}" isLink="{{true}}" src="{{item.avatar.url}}" size="80" user-id="{{item.userId}}" admin="{{item.admin}}" blue-v="{{item.blueV}}" />
+
+    </view>
+    <view class="user-info-container">
+      <view class="user-nickname">
+        
+        <text style="font-weight: bold; color: rgb(73, 103, 131);">{{item.nickName}}</text>
+      </view>
+      <view class="user-intro">{{item.motto || '这个人很懒，什么都没留下'}}</view>
+      
+    </view>
+    
+  </view>
+</view>
+
+<l-loadmore l-class="loading" show="{{!initLoading&&loading}}" type="loading" loading-text="正在加载中..." line />
+<l-loadmore l-class="loading" show="{{!nodata&&!initLoading&&!hasMore && !loading}}" type="end" end-text="已经到底了" line />
+<view class="bottom-adapt" style="height: 100rpx;"></view>
+<nothing wx:if="{{nodata}}" pic="../../images/icon_nothing/pic_topic.png" tip="空空如也" />
+

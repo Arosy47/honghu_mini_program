@@ -1,0 +1,20 @@
+
+
+<view class="favor-bar">
+  
+  <view class="item" catchtap="onCommentIconTap">
+    <image class="item-icon" src="../../images/icon_favor/{{hasComment ? 'comment_hl' : 'comment'}}.png" />
+    <text class="{{hasComment ? 'item-text-active' : 'item-text'}}">{{commentCount}}</text>
+  </view>
+  
+  <view class="item" catchtap="onThumbUpIconTap">
+    <image class="item-icon" src="../../images/icon_favor/{{hasThumbUp ? 'icon_like' : 'icon_unlike'}}.png" />
+    <text class="{{hasThumbUp ? 'item-text-active' : 'item-text'}}">{{thumbUpCount}}</text>
+  </view>
+
+  <view class="item" catchtap="onCollectIconTap">
+    <image class="item-icon" src="../../images/icon_favor/{{hasCollect ? 'star_hl' : 'star'}}.png" />
+    <text class="{{hasCollect ? 'item-text-active' : 'item-text'}}">{{collectCount}}</text>
+  </view>
+
+</view>

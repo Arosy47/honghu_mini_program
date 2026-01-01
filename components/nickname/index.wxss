@@ -1,0 +1,36 @@
+
+
+.nickname {
+  color: #576b95;
+  
+  font-weight: bold;
+}
+
+.nickname-anon {
+  color: #acacac;
+  
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.blue-v-badge-nickname {
+  width: 24rpx;
+  height: 24rpx;
+  background: linear-gradient(135deg, #1E90FF, #4169E1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 6rpx rgba(30, 144, 255, 0.3);
+}
+
+.blue-v-icon-nickname {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14rpx;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}

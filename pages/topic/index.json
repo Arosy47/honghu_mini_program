@@ -1,0 +1,15 @@
+{
+  "usingComponents":{
+    "l-mask":"../../miniprogram_npm/lin-ui/mask/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200,
+
+  "window":{
+    "navigationStyle": "default",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  }
+}

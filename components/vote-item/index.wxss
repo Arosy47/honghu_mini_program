@@ -1,0 +1,12 @@
+
+
+.vote{
+  
+  background-color: #f7f7f7;
+  padding: 10rpx 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.voteHover{
+  color:#b80c0c ;
+}

@@ -1,0 +1,17 @@
+
+
+<view class='dialog'>
+  
+  <scroll-view
+    scroll-y="{{true}}"
+    style="height:{{emojiheight}}px;"
+    scroll-top="{{scrollTop}}"
+  >
+
+    <block wx:for="{{emojis}}" wx:key="unique">
+      <image class="emoji" src="{{item.src}}" mode="aspectFit" 
+      bindtap="chooseEmoji" data-emoji="{{item.src}}" data-replace="{{item.replace}}" />
+    </block>
+  </scroll-view>
+  
+</view>

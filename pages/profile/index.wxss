@@ -1,0 +1,48 @@
+page{
+  background-color: white;
+}
+
+.signbanner {
+  box-shadow: -20rpx 20rpx 30rpx #d9d9d9, 20rpx -20rpx 30rpx #ffffff;
+}
+
+.cu-list-special {
+  padding: 0 20rpx;
+}
+
+.bg_img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 750rpx;
+  filter: blur(10rpx);
+}
+
+.highSelectColor{
+  
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 20rpx;
+  
+}
+
+.font-hover{
+  color: gray !important;
+}
+
+.tag{
+  border-radius: 40rpx;
+  width: auto;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgb(0, 0, 0);
+  padding:12rpx 18rpx;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  font-size: 20rpx;
+  font-weight: 500;
+  margin-left: 15rpx;
+}
+

@@ -1,0 +1,22 @@
+
+
+<view class="{{topicedit?'dialog-topic':'dialog'}}" wx:if="{{visible}}">
+
+  <scroll-view
+    scroll-y="{{true}}"
+    class="{{topicedit?'class-topic-edit':'class2'}}"
+    style="height:{{emojiheight}}px;"
+    scroll-top="{{scrollTop}}"
+  >
+    <view class="emoji-all">
+      <view
+        class="emoji"
+        wx:for="{{emojis}}"
+        wx:key="item"
+        bindtap="chooseEmoji"
+        data-emoji="{{item}}"
+      >{{item.emoji}}</view>
+    </view>
+  </scroll-view>
+  
+</view>

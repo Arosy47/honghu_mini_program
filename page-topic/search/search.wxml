@@ -1,0 +1,66 @@
+
+
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content">搜索</view>
+</cu-custom>
+
+<van-search
+  model:value="{{ searchValue }}"
+  shape="round"
+  background="#ffffff"
+  placeholder="请输入搜索关键词"
+  bind:search="onSearch"
+/>
+
+<view class="bg-white radius-lg padding-bottom" style="min-height: 80vh;">
+
+  <view wx:if="{{searchHistory.length>0}}" class="padding-lr" style="z-index: -1;">
+    <view class="flex justify-between">
+      <view class="text-black text-bold">搜索历史</view>
+      <view class="cuIcon-delete text-gray" catchtap="clearHistory">清除历史</view>
+    </view>
+    <view class="flex" style="width: 100%; flex-wrap: wrap; overflow: hidden; max-height: 140rpx;">
+      <view class="padding-xs" wx:for="{{searchHistory}}" wx:key="index" data-index="{{index}}" data-value="{{item}}" catchtap="historySearch">
+        <view class="cu-tag round bg-grey light">
+        <text style="max-width: 230rpx; overflow: hidden;">{{item}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view style="padding-left: 30rpx;">
+    <view class="flex justify-between">
+      <view class="text-black text-bold">板块</view>
+    </view>
+
+    <view class="tag-items">
+      <view class="tag-class" wx:for="{{labels}}" wx:key="index" data-label="{{item}}" bind:tap="onTagTap" hover-class="mask-hover">
+        <image class="tag-image" src="{{'https://'+ item.bgPicture+'!article_small'}}" mode="aspectFill"/>
+        <text style="font-size: 25rpx; font-weight: normal; color: black;">{{item.categoryName}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-adapt">
+    <view class="flex justify-between">
+      <view class="text-red text-bold" style="padding-left: 30rpx;">热帖</view>
+    </view>
+    
+    <view  class="hotArticle">
+      <view wx:for="{{topTen}}" wx:key="id" style="align-items: center; padding-left: 30rpx;padding-right: 30rpx;" hover-class="highSelectColor">
+        <view data-id="{{item.id}}" bind:tap="gotoDetail" class="content-text-one-line" style="font-size: 30rpx; color: #000000;font-weight: normal;">
+          <text wx:if="{{index===0}}" class="num-font" style="color: rgb(165, 21, 21);" >{{index+1}}. </text>
+          <text wx:if="{{index===1}}" class="num-font" style="color: #f46b3f;">{{index+1}}. </text>
+          <text wx:if="{{index===2}}" class="num-font" style="color: #ebac12">{{index+1}}. </text>
+          <text wx:if="{{index>2}}" class="num-font" style="color: gray">{{index+1}}. </text>
+          {{item.content}}
+        </view>
+
+        <view class="l1" style="margin-top: 20rpx;"></view>
+      
+      </view>
+    
+    </view>
+  </view>
+
+</view>
+

@@ -1,0 +1,139 @@
+{
+  "pages": [
+    "pages/topic/index",
+    "pages/timetable/index",
+    "pages/publish-page/index",
+    "pages/notification/index",
+    "pages/profile/index",
+    "page-webview/webview",
+    "page-webview/realwebview"
+  ],
+  "subPackages": [
+    {
+      "root": "page-topic",
+      "pages": [
+        "topic-detail/index",
+        "top-ten/index",
+        "search/search",
+        "category-detail/index",
+        "topic-edit/index",
+        "search-result/index",
+        "share-poster/index"
+      ]
+    },
+    {
+      "root": "page-profile",
+      "pages": [
+        "user-edit/index",
+        "user-edit/edit/index",
+        "profile-article/index",
+        "profile-comment/index",
+        "community-norms/index",
+        "visiting-card/index",
+        "visiting-card/user-info/index"
+      ]
+    },
+    {
+      "root": "page-notification",
+      "pages": [
+        "notification-list/index",
+        "sys-notice-list/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/topic/index": {
+      "network": "all",
+      "packages": [
+        "page-topic",
+        "page-profile"
+      ]
+    },
+    "pages/notification/index": {
+      "network": "all",
+      "packages": [
+        "page-notification"
+      ]
+    },
+    "pages/profile/index": {
+      "network": "all",
+      "packages": [
+        "page-profile"
+      ]
+    }
+  },
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "生态圈",
+    "backgroundColor": "#ffffff",
+    "onReachBottomDistance": 50,
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#f7f7f7",
+    "color": "#8a8a8a",
+    "selectedColor": "#374856",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/topic/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/homefill.png"
+      },
+      {
+        "pagePath": "pages/timetable/index",
+        "text": "课表",
+        "iconPath": "images/tabbar/home1.png",
+        "selectedIconPath": "images/tabbar/home.png"
+      },
+      {
+        "pagePath": "pages/publish-page/index",
+        "text": "发布",
+        "iconPath": "images/tabbar/add.png",
+        "selectedIconPath": "images/tabbar/closeblue.png"
+      },
+      {
+        "pagePath": "pages/notification/index",
+        "text": "消息",
+        "iconPath": "images/tabbar/chat.png",
+        "selectedIconPath": "images/tabbar/chatfill.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/tabbar/profile.png",
+        "selectedIconPath": "images/tabbar/profilefill.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "l-tag": "./miniprogram_npm/lin-ui/tag/index",
+    "l-loadmore": "./miniprogram_npm/lin-ui/loadmore/index",
+    "l-image-picker": "./miniprogram_npm/lin-ui/image-picker/index",
+    "nothing": "./components/nothing/index",
+    "avatar": "./components/avatar/index",
+    "nickname": "./components/nickname/index",
+    "topic-item": "./components/topic-item/index",
+    "favor-bar": "./components/favor-bar/index",
+    "profile-card": "./components/profile-card/index",
+    "privacy": "./components/privacy/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "cu-custom": "./colorui/components/cu-custom/cu-custom",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-progress": "@vant/weapp/progress/index",
+    "van-field": "@vant/weapp/field/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "__usePrivacyCheck__": true,
+  "useExtendedLib": {
+    "weui": true
+  }
+ 
+}

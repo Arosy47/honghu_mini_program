@@ -1,0 +1,156 @@
+
+
+<view style="position: relative;">
+  <view hover-class="highSelectColor" class="topic-item-class topic-item" wx:if="{{topic&&!detail}}" bindtap="gotoTopicDetail" >
+
+    <view class="left">
+      <avatar anonymous="{{topic.anonymous}}" circle="{{true}}" src="{{topic.avatar}}" is-link="{{!topic.anonymous}}" user-id="{{topic.userId}}" size="85" admin="{{admin}}" blue-v="{{topic.blueV}}" />
+    </view>
+
+    <view class="right">
+    
+      <view class="header-info">
+        <view hover-stop-propagation="true" class="info-top">
+          <nickname nickname="{{topic.anonymous?topic.anonymousName:topic.userNickName}}" isAnon="{{topic.anonymous}}" user-id="{{topic.userId}}" is-link="{{!topic.anonymous}}" size="27" length="16"/>
+
+          <text class="time">{{topic.createTime}}</text>
+
+        </view>
+
+        <view wx:if="{{showTop&&topic.top}}" class="zhidingTag" style="position: relative;right: 60rpx;transform: translateY(-10rpx);">置顶</view>
+
+        <view wx:else hover-stop-propagation="true" hover-class="highSelectColor" style="display: flex; align-items: center;padding-right: 20rpx; border-radius: 10%;">
+          <text class="cuIcon-more text-gray" style="font-size: 40rpx; padding: 10rpx 10rpx 10rpx 30rpx; " catchtap="onMoreIconTap"></text>
+        </view>
+      </view>
+  
+      <view class="topic-content">
+
+        <view style="margin-bottom: 10rpx;">
+
+          <view class="content-text-expand" style="position: relative;">
+            
+            <view id="more-text-yan" style="position: absolute; color: white;opacity: 0; z-index: -1; line-height: 42rpx;">{{topic.content}}</view>
+            
+            <rich-text class="more-text-collapse"  nodes="{{richContent}}" ></rich-text>
+
+          </view>
+          
+          <view style="background-color: transparent;" wx:if="{{isHasShowMore}}" class="text-expand" catchtap="gotoTopicDetail">更多</view>
+        </view>
+
+        <view class="media" style="width: 100%;" wx:if="{{topic.displayType=='PICTURE' || topic.displayType=='VIDEO'}}" >
+          <view class="posters" wx:if="{{topic.displayType=='PICTURE'}}">
+            <view style="border-radius: 10rpx;"  hover-stop-propagation="true" wx:if="{{imgUrlList.length === 1}}">
+
+              <image lazy-load class="image column-one" style="height: {{imgHeight}}rpx; width: {{imgWidth}}rpx;" wx:for="{{imgUrlList}}" wx:key="index"  src="{{item}}" data-index="{{index}}" catchtap="previewImage" mode="{{imageMode}}"></image>
+
+            </view>
+            
+            <view hover-stop-propagation="true" wx:else>
+              <image lazy-load class="image" wx:for="{{imgUrlList}}" wx:key="index" src="{{item}}" data-index="{{index}}" mode="aspectFill"  catchtap="previewImage" />
+            </view>
+          </view>
+
+          <video class="video" wx:elif="{{topic.displayType=='VIDEO'}}" src="{{topic.video.src}}" poster="{{topic.video.cover}}" direction="0" play-btn-position="center" style="max-height: 580rpx;{{topic.video.height > topic.video.width ? 'height: 580rpx;width: ' + 580 * topic.video.width / topic.video.height + 'rpx' : 'width: 580rpx;height: ' + 580 * topic.video.height / topic.video.width + 'rpx'}}" autoplay="{{autoplay}}" catchtap="doNothing" />
+        </view>
+
+      </view>
+
+      <view hover-stop-propagation="true" wx:if="{{topic.positionInfo}}" style="margin-bottom: 10rpx;">
+      </view>
+
+      <view class="tags-list" wx:if="{{showTags && topic.categoryCode&&(!topic.top||!showTop)}}" hover-stop-propagation="true">
+
+          <view class="category-tag" data-category="{{topic.categoryCode}}" catchtap="onTagTap" >#{{topic.categoryName}}</view>
+      </view>
+
+      <favor-bar style="margin-right: 20rpx;" topic-detail="{{detail}}" comment-count="{{topic.commentCount}}" thumb-up-count="{{topic.thumbUpCount}}" collect-count="{{topic.collectCount}}" view-count="{{topic.viewCount}}" has-comment="{{topic.commentStatus}}" has-thumb-up="{{topic.thumbUpStatus}}" has-collect="{{topic.collectStatus}}" is-ding="{{topic.dingStatus}}" bind:thumbUpIconTap="onThumbUpTap"  />
+    </view>
+
+  </view>
+
+  <view class="topic-item-class topic-item-detail" wx:elif="{{topic&&detail}}">
+    
+    <view class="header" style="display: flex; justify-content: space-between;">
+      <view style="display: flex; justify-content: space-between;" >
+          
+        <avatar anonymous="{{topic.anonymous}}" circle="{{true}}" src="{{topic.avatar}}" is-link="{{!topic.anonymous}}" user-id="{{topic.userId}}" size="85" admin="{{admin}}" blue-v="{{topic.blueV}}" />
+        <view style="margin-left: 20rpx;">
+          <view class="info-top">
+            <nickname nickname="{{topic.anonymous?topic.anonymousName:topic.userNickName}}" isAnon="{{topic.anonymous}}" user-id="{{topic.userId}}" is-link="{{!topic.anonymous}}" size="27" length="16"/>
+
+          </view>
+          <text class="time" style="margin-left: 0;">{{topic.createTime}}</text>
+          
+        </view>
+      </view>
+
+      <view hover-stop-propagation="true" hover-class="highSelectColor" style="display: flex; align-items: center;padding-right: 20rpx; border-radius: 10%;">
+        <text class="cuIcon-more text-gray" style="font-size: 40rpx; padding: 10rpx 10rpx 10rpx 30rpx; " catchtap="onMoreIconTap"></text>
+      </view>
+    </view>
+
+    <view class="topic-content-detail" >
+      <view class="content-text" style="color: #2f3033;font-size: 28rpx;text-align: left;"  >
+
+        <rich-text style="font-size:30rpx; line-height: 48rpx; display:unset;" nodes="{{richContent}}" user-select></rich-text>
+
+      </view>
+
+    </view>
+
+    <view class="media" style="width: 97%;" wx:if="{{topic.displayType=='PICTURE' || topic.displayType=='VIDEO'}}" >
+      <view class="posters" wx:if="{{topic.displayType=='PICTURE'}}">
+        <view style="border-radius: 10rpx;"  hover-stop-propagation="true" wx:if="{{imgUrlList.length === 1}}">
+
+          <image lazy-load class="image column-one" style="height: {{imgHeight}}rpx; width: {{imgWidth}}rpx;" wx:for="{{imgUrlList}}" wx:key="index"  src="{{item}}" data-index="{{index}}" catchtap="previewImage" mode="{{imageMode}}"></image>
+
+        </view>
+        
+        <view hover-stop-propagation="true" wx:else>
+          <image lazy-load class="image" style="height: 220rpx; width: 220rpx;" wx:for="{{imgUrlList}}" wx:key="index" src="{{item}}" data-index="{{index}}" mode="aspectFill"  catchtap="previewImage" />
+        </view>
+      </view>
+
+      <video class="video" wx:elif="{{topic.displayType=='VIDEO'}}" src="{{topic.video.src}}" poster="{{topic.video.cover}}" direction="0" play-btn-position="center" style="max-height: 580rpx;{{topic.video.height > topic.video.width ? 'height: 580rpx;width: ' + 580 * topic.video.width / topic.video.height + 'rpx' : 'width: 580rpx;height: ' + 580 * topic.video.height / topic.video.width + 'rpx'}}" autoplay="{{autoplay}}" catchtap="doNothing" />
+    </view>
+
+    <view hover-stop-propagation="true" wx:if="{{topic.positionInfo}}" style="margin-bottom: 10rpx;">
+    </view>
+
+    <view class="tags-list" wx:if="{{showTags && topic.categoryCode&&(!topic.top||!showTop)}}" >
+      <view hover-stop-propagation="true">
+        
+        <view class="category-tag" data-category="{{topic.categoryCode}}" catchtap="onTagTap" >#{{topic.categoryName}}</view>
+      </view>
+    </view>
+
+    <view style="padding-left: 30rpx; padding-right: 30rpx;">
+      <favor-bar topic-detail="{{detail}}" comment-count="{{topic.commentCount}}" thumb-up-count="{{topic.thumbUpCount}}" collect-count="{{topic.collectCount}}" view-count="{{topic.viewCount}}" has-comment="{{topic.commentStatus}}" has-thumb-up="{{topic.thumbUpStatus}}" has-collect="{{topic.collectStatus}}" is-ding="{{topic.dingStatus}}" bind:thumbUpIconTap="onThumbUpTap" />
+    </view>
+
+  </view>
+
+  <view class="topic-item-class topic-item overlay" wx:if="{{topic==null||topic.hasDelete}}">
+    <view class="left">
+      <avatar anonymous="{{topic.anonymous}}" circle="{{true}}" gray src="{{topic.avatar}}" is-link="{{!topic.anonymous}}" user-id="{{topic.userId}}" size="85" admin="{{admin}}" blue-v="{{topic.blueV}}" />
+    </view>
+    <view class="right">
+      <view class="header-info">
+        <view hover-stop-propagation="true" class="info-top">
+          <view hover-class="highSelectColor">
+            <text style="color: gray;">{{topic.anonymous?topic.anonymousName:topic.userNickName}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view style="text-align: left; color: rgb(175, 173, 173); margin-bottom: 30rpx; width: 80%; position: absolute; top: 50%; display: flex; justify-content: center;">此条内容已被删除</view>
+    </view>
+  </view>
+</view>
+
+<view class="l1"></view>
+
+<view style="{{topic.top&&!detail?'height:10rpx; background-color:#ededed':''}}"></view>
+

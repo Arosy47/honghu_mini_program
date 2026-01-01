@@ -1,0 +1,6 @@
+{
+  
+  "usingComponents": {
+    "emoji-picker-png": "../../components/emoji-picker-png/emoji-picker"
+  }
+}

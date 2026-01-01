@@ -1,0 +1,77 @@
+
+
+<cu-custom bgColor="theme-color" isBack="{{true}}">
+  <view slot="content">用户信息</view>
+</cu-custom>
+
+<view class="page">
+
+  <view class='sell_cells'>
+  
+    <view class="sell_cell" hover-class="highSelectColor" style="height: 120rpx;" >
+      <text class="sell_title">头像</text>
+      <view hover-stop-propagation="true" style="padding: 0; margin: 0; border-radius: 0;" >
+        <image style="width: 100rpx;height: 100rpx; border-radius: 10%;" src="{{'https://' + user.avatar.url+'!article_small'}}" data-user-id="{{userId}}" mode="aspectFill" />
+      </view>
+      
+    </view>
+    <view class="line"></view>
+
+    <view class="sell_cell"  hover-class="highSelectColor" >
+      <text class="sell_title">昵称</text>
+      <text class="right-jiantou">{{user.nickName}}</text>
+    </view>
+    <view class="line"></view>
+  
+    <view class="sell_cell" hover-class="highSelectColor" >
+      <text class="sell_title">性别</text>
+      <text class="right-jiantou">{{user.gender==0?'女':(user.gender==1?'男':'未知')}}</text>
+    </view>
+    <view class="line"></view>
+
+    <view class="sell_cell" hover-class="highSelectColor" >
+      <text class="sell_title">学校</text>
+      <text class="right-jiantou">{{user.schoolName?user.schoolName:''}}</text>
+    </view>
+    <view class="line"></view>
+
+    <view class="sell_cell" hover-class="highSelectColor" bindtap="copyId" data-user-id="{{user.userId}}">
+      <text class="sell_title">数字ID</text>
+      <text class="right-jiantou">{{user.userId}}</text>
+    </view>
+    <view class="line"></view>
+
+    <view class="sell_cell" hover-class="highSelectColor" >
+      <text class="sell_title">个性签名</text>
+      <text class="right-jiantou">{{user.motto}}</text>
+      
+    </view>
+    <view class="line"></view>
+
+    <view class="sell_cell" hover-class="highSelectColor">
+      <text class="sell_title">家乡</text>
+      <text class="right-jiantou">
+        <text wx:if="{{home.length>1}}"> {{home[0]}} {{home[1]}}</text>
+        
+      </text>
+    </view>
+     
+    <view class="line"></view>
+
+    <view class="sell_cell" hover-class="highSelectColor">
+      <text class="sell_title">生日</text>
+      <text class="right-jiantou">
+        <text wx:if="{{user.birthday}}">{{user.birthday}}</text>
+        
+      </text>
+    </view>
+    
+    <view class="line"></view>
+
+  </view>
+
+</view>
+
+<privacy/>
+
+<l-image-clipper lock-width lock-height limit-move min-ratio="1" show="{{showImageClipper}}" image-url="{{tmpAvatar}}" bindlinclip="onClipTap" />
